@@ -117,6 +117,7 @@ public class Product {
             return;
         }
         double newRating = (getNumberOfRatings() * getRating() + Rating) / (getNumberOfRatings() + 1);
+        setRating(newRating);
         NumberOfRatings++;
     }
 
