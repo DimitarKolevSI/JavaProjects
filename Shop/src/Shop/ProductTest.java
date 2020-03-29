@@ -191,14 +191,9 @@ public class ProductTest {
 
     @Test
     public void TestForEqualsMethodWithAnotherProduct(){
-        //Given
-        boolean answer;
-
-        //When
-        answer = p.equals(p1);
 
         //Then
-        assertFalse(p.equals(p1));
+        assertNotEquals(p,p1);
     }
 
     @Test
@@ -207,7 +202,7 @@ public class ProductTest {
         String answer = "Answer";
 
         //Then
-        assertFalse(p.equals(answer));
+        assertNotEquals(p,answer);
     }
 
 }
