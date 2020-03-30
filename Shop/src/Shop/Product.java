@@ -2,6 +2,12 @@ package Shop;
 
 import java.util.Objects;
 
+enum Category{
+    LAPTOP_AND_PC,
+    COMPUTER_ACCESSORIES,
+    BOOKS,
+}
+
 public class Product {
     private static int IDHelper = 1000;
     private int ID;
@@ -149,8 +155,6 @@ public class Product {
             setPrice(getPrice() + price);
         }
     }
-
-
 
     @Override
     public String toString() {
