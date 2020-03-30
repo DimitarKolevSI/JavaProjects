@@ -5,7 +5,7 @@ import java.util.Objects;
 enum Category{
     LAPTOP_AND_PC,
     COMPUTER_ACCESSORIES,
-    BOOKS,
+    BOOKS
 }
 
 public class Product {
@@ -17,7 +17,7 @@ public class Product {
     private int NumberOfRatings;
 
     //Constructors
-    Product() {
+    public Product() {
         setID();
         setAmount(0);
         setPrice(0);
@@ -25,7 +25,7 @@ public class Product {
         setNumberOfRatings(0);
     }
 
-    Product(int Amount, double Price) {
+    public Product(int Amount, double Price) {
         setID();
         setAmount(Amount);
         setPrice(Price);
@@ -33,7 +33,7 @@ public class Product {
         setNumberOfRatings(0);
     }
 
-    Product(int Amount, double Price, double Rating, int NumberOfRatings) {
+    public Product(int Amount, double Price, double Rating, int NumberOfRatings) {
         setID();
         setAmount(Amount);
         setPrice(Price);
