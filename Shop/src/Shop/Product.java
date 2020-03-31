@@ -41,6 +41,14 @@ public class Product {
         setNumberOfRatings(NumberOfRatings);
     }
 
+    public Product(Product another){
+        this.ID = another.ID;
+        setAmount(another.Amount);
+        setPrice(another.Price);
+        setRating(another.Rating);
+        setNumberOfRatings(another.NumberOfRatings);
+    }
+
     //Setters
 
     private void setID() {
@@ -153,6 +161,22 @@ public class Product {
         }
         finally {
             setPrice(getPrice() + price);
+        }
+    }
+
+    void decreasePriceWithPercent(double percent) throws IllegalArgumentException{
+        try{
+            if(percent < 0 || percent > 100){
+                throw new IllegalArgumentException("Invalid percent entered! Should be between 0 and 100");
+            }
+        }
+        catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            percent = 0;
+        }
+        finally {
+            double newPrice = this.getPrice() - (percent*this.getPrice())/100;
+            setPrice(newPrice);
         }
     }
 

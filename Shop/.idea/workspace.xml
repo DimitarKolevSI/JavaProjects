@@ -53,6 +53,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -104,15 +105,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ProductTest.TestForPercentDiscount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Shop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Shop.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Shop" />
+      <option name="MAIN_CLASS_NAME" value="Shop.ProductTest" />
+      <option name="METHOD_NAME" value="TestForPercentDiscount" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.ProductTest.TestForIncreasingAmountWithNegativeNumber" />
       <item itemvalue="JUnit.ProductTest" />
+      <item itemvalue="JUnit.ProductTest.TestForPercentDiscount" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.ProductTest" />
+        <item itemvalue="JUnit.ProductTest.TestForPercentDiscount" />
         <item itemvalue="JUnit.ProductTest.TestForIncreasingAmountWithNegativeNumber" />
       </list>
     </recent_temporary>
@@ -128,7 +147,7 @@
       <option name="presentableId" value="Default" />
       <updated>1585219454238</updated>
       <workItem from="1585219456870" duration="6245000" />
-      <workItem from="1585425737874" duration="10353000" />
+      <workItem from="1585425737874" duration="13712000" />
     </task>
     <task id="LOCAL-00001" summary="Finished ProductTest.java">
       <created>1585429459364</created>
@@ -160,38 +179,44 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585427846013" />
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1585422086517">
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1585634685421">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585422086517" />
-    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1585476376330">
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585634685421" />
+    <state x="2638" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585633732503" />
+    <state x="498" y="14" key="CommitChangelistDialog2" timestamp="1585635830417">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585476376330" />
+    <state x="498" y="14" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585635830417" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1585551770391">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585551770391" />
-    <state width="1493" height="194" key="GridCell.Tab.0.bottom" timestamp="1585479197988">
+    <state x="591" y="311" key="Github.CreateGistDialog" timestamp="1585635846367">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="194" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585479197988" />
-    <state width="1493" height="194" key="GridCell.Tab.0.center" timestamp="1585479197987">
+    <state x="591" y="311" key="Github.CreateGistDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585635846367" />
+    <state width="1493" height="142" key="GridCell.Tab.0.bottom" timestamp="1585635685371">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="194" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585479197987" />
-    <state width="1493" height="194" key="GridCell.Tab.0.left" timestamp="1585479197987">
+    <state width="1493" height="142" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585635685371" />
+    <state width="1493" height="142" key="GridCell.Tab.0.center" timestamp="1585635685370">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="194" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585479197987" />
-    <state width="1493" height="194" key="GridCell.Tab.0.right" timestamp="1585479197987">
+    <state width="1493" height="142" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585635685370" />
+    <state width="1493" height="142" key="GridCell.Tab.0.left" timestamp="1585635685370">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="194" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585479197987" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1585478879969">
+    <state width="1493" height="142" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585635685370" />
+    <state width="1493" height="142" key="GridCell.Tab.0.right" timestamp="1585635685370">
       <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="142" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585635685370" />
+    <state x="2231" y="0" key="SettingsEditor" timestamp="1585633970282">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585478879969" />
+    <state x="2231" y="0" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585633970282" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1585476287119">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -200,10 +225,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="305" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585423262603" />
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585476371399">
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585635872448">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585476371399" />
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585635872448" />
     <state x="533" y="115" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1585423329087">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -212,6 +237,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="209" y="33" key="new project wizard/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585551772613" />
+    <state x="2418" y="204" width="707" height="307" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1585633891874">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2418" y="204" width="707" height="307" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585633891874" />
     <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1585478890702">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

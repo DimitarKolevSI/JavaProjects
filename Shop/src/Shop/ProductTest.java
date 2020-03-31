@@ -205,4 +205,40 @@ public class ProductTest {
         assertNotEquals(p,answer);
     }
 
+    @Test
+    public void TestForPercentDiscount(){
+        //Given
+        double percent = 50;
+
+        //When
+        p.decreasePriceWithPercent(percent);
+
+        //Then
+        assertEquals(15,p.getPrice(),0.01);
+    }
+
+    @Test
+    public void TestForPercentDiscountWithNegative(){
+        //Given
+        double percent = -50;
+
+        //When
+        p.decreasePriceWithPercent(percent);
+
+        //Then
+        assertEquals(30,p.getPrice(),0.01);
+    }
+
+    @Test
+    public void TestForPercentDiscountWith25p(){
+        //Given
+        double percent = 25;
+
+        //When
+        p.decreasePriceWithPercent(percent);
+
+        //Then
+        assertEquals(22.5,p.getPrice(),0.01);
+    }
+
 }

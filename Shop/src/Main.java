@@ -10,7 +10,7 @@ public class Main {
             Product p1 = new Product();
             System.out.println(p1);
         }
-        Product l = new LaptopAndPcCategory();
-
+        LaptopAndPcCategory lp = new LaptopAndPcCategory(p,null,"Intel",1000,20,"Board","Card");
+        System.out.println(lp);
     }
 }
