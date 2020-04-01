@@ -1,7 +1,4 @@
-import Shop.Laptop;
-import Shop.LaptopAndPcCategory;
-import Shop.Product;
-import Shop.ShoppingCart;
+import Shop.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +23,7 @@ public class Main {
         shoppingCart.add(p);
         shoppingCart.add(lp);
         shoppingCart.add(l);
+        shoppingCart.add(null);
         for(int i = 0;i<3;i++){
             if(shoppingCart.get(i) instanceof Product){
                 System.out.println("This is product!");
@@ -37,5 +35,6 @@ public class Main {
                 System.out.println("This is Laptop");
             }
         }
+        System.out.println(shoppingCart.get(1));
     }
 }

@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3484480-16be-4964-99ca-6c4dda4f0aa0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Shop/Laptop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Shop/LaptopAndPcCategoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Shop/ShoppingCart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Shop/Shop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Shop/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Shop/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Shop/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Shop/Shop/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Shop/Shop/Product.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shop/LaptopAndPcCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop/LaptopAndPcCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shop/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shop/ShoppingCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop/ShoppingCart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shop/ShoppingCartTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop/ShoppingCartTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +105,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductTest.TestForIncreasingAmountWithNegativeNumber" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ShoppingCartTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Shop" />
       <extension name="coverage">
         <pattern>
@@ -116,14 +114,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Shop" />
-      <option name="MAIN_CLASS_NAME" value="Shop.ProductTest" />
-      <option name="METHOD_NAME" value="TestForIncreasingAmountWithNegativeNumber" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="Shop.ShoppingCartTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductTest.TestForPercentDiscount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ShoppingCartTest.testForShoppingCartForBill" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Shop" />
       <extension name="coverage">
         <pattern>
@@ -132,8 +129,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Shop" />
-      <option name="MAIN_CLASS_NAME" value="Shop.ProductTest" />
-      <option name="METHOD_NAME" value="TestForPercentDiscount" />
+      <option name="MAIN_CLASS_NAME" value="Shop.ShoppingCartTest" />
+      <option name="METHOD_NAME" value="testForShoppingCartForBill" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -141,18 +138,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.ProductTest.TestForIncreasingAmountWithNegativeNumber" />
       <item itemvalue="JUnit.ProductTest" />
-      <item itemvalue="JUnit.ProductTest.TestForPercentDiscount" />
       <item itemvalue="JUnit.LaptopAndPcCategoryTest.TestForCopyConstructor" />
+      <item itemvalue="JUnit.ShoppingCartTest.testForShoppingCartForBill" />
+      <item itemvalue="JUnit.ShoppingCartTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.ShoppingCartTest" />
+        <item itemvalue="JUnit.ShoppingCartTest.testForShoppingCartForBill" />
         <item itemvalue="JUnit.LaptopAndPcCategoryTest.TestForCopyConstructor" />
         <item itemvalue="JUnit.ProductTest" />
-        <item itemvalue="JUnit.ProductTest.TestForPercentDiscount" />
-        <item itemvalue="JUnit.ProductTest.TestForIncreasingAmountWithNegativeNumber" />
       </list>
     </recent_temporary>
   </component>
@@ -167,7 +164,7 @@
       <option name="presentableId" value="Default" />
       <updated>1585219454238</updated>
       <workItem from="1585219456870" duration="6245000" />
-      <workItem from="1585425737874" duration="22562000" />
+      <workItem from="1585425737874" duration="31361000" />
     </task>
     <task id="LOCAL-00001" summary="Finished ProductTest.java">
       <created>1585429459364</created>
@@ -190,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585635894455</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added Laptop and ShoppingCart">
+      <created>1585727070470</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1585727070470</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,22 +204,23 @@
     <MESSAGE value="Finished ProductTest.java" />
     <MESSAGE value="Add enum class Category" />
     <MESSAGE value="Added LaptopAndPcCategory" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added LaptopAndPcCategory" />
+    <MESSAGE value="Added Laptop and ShoppingCart" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Laptop and ShoppingCart" />
   </component>
   <component name="WindowStateProjectService">
     <state x="93" y="93" width="1350" height="638" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1585427846013">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585427846013" />
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1585723586481">
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1585741304365">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585723586481" />
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585741304365" />
     <state x="2638" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585633732503" />
-    <state x="498" y="14" key="CommitChangelistDialog2" timestamp="1585635893682">
+    <state x="498" y="14" key="CommitChangelistDialog2" timestamp="1585746365130">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="498" y="14" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585635893682" />
+    <state x="498" y="14" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585746365130" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1585551770391">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -224,43 +229,47 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="591" y="311" key="Github.CreateGistDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585635846367" />
-    <state width="1493" height="239" key="GridCell.Tab.0.bottom" timestamp="1585726792706">
+    <state width="1493" height="239" key="GridCell.Tab.0.bottom" timestamp="1585741181655">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="239" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585726792706" />
-    <state width="1493" height="239" key="GridCell.Tab.0.center" timestamp="1585726792705">
+    <state width="1493" height="239" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585741181655" />
+    <state width="1493" height="239" key="GridCell.Tab.0.center" timestamp="1585741181654">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="239" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585726792705" />
-    <state width="1493" height="239" key="GridCell.Tab.0.left" timestamp="1585726792705">
+    <state width="1493" height="239" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585741181654" />
+    <state width="1493" height="239" key="GridCell.Tab.0.left" timestamp="1585741181654">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="239" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585726792705" />
-    <state width="1493" height="239" key="GridCell.Tab.0.right" timestamp="1585726792705">
+    <state width="1493" height="239" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585741181654" />
+    <state width="1493" height="239" key="GridCell.Tab.0.right" timestamp="1585741181654">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="239" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585726792705" />
+    <state width="1493" height="239" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585741181654" />
     <state x="2231" y="0" key="SettingsEditor" timestamp="1585633970282">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585478879969" />
     <state x="2231" y="0" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585633970282" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1585635899976">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1585727074878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585635899976" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585727074878" />
     <state x="498" y="305" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1585423262603">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="305" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585423262603" />
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585727031514">
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585746341707">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585727031514" />
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585746341707" />
     <state x="533" y="115" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1585727022729">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="533" y="115" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585727022729" />
+    <state x="1920" y="0" width="1220" height="811" key="dock-window-1" timestamp="1585745318115">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1920" y="0" width="1220" height="811" key="dock-window-1/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585745318115" />
     <state x="209" y="33" key="new project wizard" timestamp="1585551772613">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
