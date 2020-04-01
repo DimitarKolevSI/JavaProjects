@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f3484480-16be-4964-99ca-6c4dda4f0aa0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Shop/Shop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Shop/User.java" afterDir="false" />
+    <list default="true" id="f3484480-16be-4964-99ca-6c4dda4f0aa0" name="Default Changelist" comment="Added new features to Shop and RegisteredUser">
+      <change afterPath="$PROJECT_DIR$/src/Shop/RegisteredUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Shop.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Shop/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Shop/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Shop/Shop/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Shop/Shop/Product.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shop/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shop/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop/Shop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Shop/ShoppingCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop/ShoppingCart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shop/ShoppingCartTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop/ShoppingCartTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shop/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +167,7 @@
       <option name="presentableId" value="Default" />
       <updated>1585219454238</updated>
       <workItem from="1585219456870" duration="6245000" />
-      <workItem from="1585425737874" duration="31361000" />
+      <workItem from="1585425737874" duration="38993000" />
     </task>
     <task id="LOCAL-00001" summary="Finished ProductTest.java">
       <created>1585429459364</created>
@@ -194,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585727070470</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added User and Shop">
+      <created>1585746433305</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1585746433305</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,22 +215,24 @@
     <MESSAGE value="Add enum class Category" />
     <MESSAGE value="Added LaptopAndPcCategory" />
     <MESSAGE value="Added Laptop and ShoppingCart" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Laptop and ShoppingCart" />
+    <MESSAGE value="Added User and Shop" />
+    <MESSAGE value="Added new features to Shop and RegisteredUser" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new features to Shop and RegisteredUser" />
   </component>
   <component name="WindowStateProjectService">
     <state x="93" y="93" width="1350" height="638" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1585427846013">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585427846013" />
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1585741304365">
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1585749789874">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585741304365" />
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585749789874" />
     <state x="2638" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585633732503" />
-    <state x="498" y="14" key="CommitChangelistDialog2" timestamp="1585746365130">
+    <state x="498" y="14" key="CommitChangelistDialog2" timestamp="1585755948352">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="498" y="14" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585746365130" />
+    <state x="498" y="14" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585755948352" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1585551770391">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -229,47 +241,47 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="591" y="311" key="Github.CreateGistDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585635846367" />
-    <state width="1493" height="239" key="GridCell.Tab.0.bottom" timestamp="1585741181655">
+    <state width="1493" height="239" key="GridCell.Tab.0.bottom" timestamp="1585755920564">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="239" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585741181655" />
-    <state width="1493" height="239" key="GridCell.Tab.0.center" timestamp="1585741181654">
+    <state width="1493" height="239" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585755920564" />
+    <state width="1493" height="239" key="GridCell.Tab.0.center" timestamp="1585755920564">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="239" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585741181654" />
-    <state width="1493" height="239" key="GridCell.Tab.0.left" timestamp="1585741181654">
+    <state width="1493" height="239" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585755920564" />
+    <state width="1493" height="239" key="GridCell.Tab.0.left" timestamp="1585755920564">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="239" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585741181654" />
-    <state width="1493" height="239" key="GridCell.Tab.0.right" timestamp="1585741181654">
+    <state width="1493" height="239" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585755920564" />
+    <state width="1493" height="239" key="GridCell.Tab.0.right" timestamp="1585755920564">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="239" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585741181654" />
+    <state width="1493" height="239" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585755920564" />
     <state x="2231" y="0" key="SettingsEditor" timestamp="1585633970282">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585478879969" />
     <state x="2231" y="0" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585633970282" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1585727074878">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1585746438759">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585727074878" />
-    <state x="498" y="305" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1585423262603">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585746438759" />
+    <state x="498" y="305" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1585752216214">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="498" y="305" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585423262603" />
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585746341707">
+    <state x="498" y="305" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585752216214" />
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585755937907">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585746341707" />
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585755937907" />
     <state x="533" y="115" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1585727022729">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="533" y="115" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585727022729" />
-    <state x="1920" y="0" width="1220" height="811" key="dock-window-1" timestamp="1585745318115">
+    <state x="1920" y="0" width="1220" height="811" maximized="true" key="dock-window-1" timestamp="1585754247287">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="1920" y="0" width="1220" height="811" key="dock-window-1/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585745318115" />
+    <state x="1920" y="0" width="1220" height="811" maximized="true" key="dock-window-1/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585754247287" />
     <state x="209" y="33" key="new project wizard" timestamp="1585551772613">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -282,6 +294,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585478890702" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1585751202410">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1585751202410" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Shop$ProductTest.ic" NAME="ProductTest Coverage Results" MODIFIED="1585429297987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

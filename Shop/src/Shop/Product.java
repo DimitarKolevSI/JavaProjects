@@ -1,5 +1,7 @@
 package Shop;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 enum Category{
@@ -8,7 +10,7 @@ enum Category{
     BOOKS
 }
 
-public class Product {
+public class Product implements Comparable {
     private static int IDHelper = 1000;
     private int ID;
     private int Amount;
@@ -121,7 +123,7 @@ public class Product {
 
     }
 
-    void rateTheProduct(double Rating) throws IllegalArgumentException {
+    public void rateTheProduct(double Rating) throws IllegalArgumentException {
         try {
             if (Rating < 0 || Rating > 10) {
                 throw new IllegalArgumentException("Invalid rating entered. Should be between 0-10");
@@ -135,7 +137,7 @@ public class Product {
         NumberOfRatings++;
     }
 
-    void decreasePrice(double price) throws IllegalArgumentException {
+    public void decreasePrice(double price) throws IllegalArgumentException {
         try {
             if (price < 0 || price > getPrice()) {
                 throw new IllegalArgumentException("Invalid price entered! Should be between 0 and the current price!");
@@ -150,7 +152,7 @@ public class Product {
 
     }
 
-    void increasePrice(double price) throws IllegalArgumentException {
+    public void increasePrice(double price) throws IllegalArgumentException {
         try {
             if (price < 0) {
                 throw new IllegalArgumentException("Invalid price entered! Should be positive number!");
@@ -164,7 +166,7 @@ public class Product {
         }
     }
 
-    void decreasePriceWithPercent(double percent) throws IllegalArgumentException{
+    public void decreasePriceWithPercent(double percent) throws IllegalArgumentException{
         try{
             if(percent < 0 || percent > 100){
                 throw new IllegalArgumentException("Invalid percent entered! Should be between 0 and 100");
@@ -200,5 +202,13 @@ public class Product {
     @Override
     public int hashCode() {
         return Objects.hash(ID);
+    }
+
+    @Override
+    public int compareTo(@NotNull Object o) throws IllegalArgumentException{
+        if(!(o instanceof Product)){
+            throw new IllegalArgumentException("This object is not an instance of Product!");
+        }
+        return this.ID - ((Product) o).ID;
     }
 }

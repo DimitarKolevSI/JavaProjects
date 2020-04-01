@@ -12,7 +12,6 @@ public class ShoppingCart {
         }
         else if(newProduct.getAmount()==0){
             System.out.println("This product  is out of stock! Sorry!");
-            return;
         }
         else products.add(newProduct);
     }
@@ -35,18 +34,23 @@ public class ShoppingCart {
             System.out.println("You have to add products first");
         }
         else {
-            for (int i = 0; i < products.size(); i++) {
-                bill += products.get(i).getPrice();
-                products.get(i).decreaseAmount(1);
-            }
+            bill = calculateTheBill();
             products.clear();
         }
         return bill;
     }
 
+    public double calculateTheBill(){
+        double bill = 0;
+        for(Product product:products){
+            bill += product.getPrice();
+        }
+        return bill;
+    }
+
     public void print(){
-        for(int i=0;i<products.size();i++){
-            System.out.println(products.get(i));
+        for(Product product: products){
+            System.out.println(product);
         }
     }
 }

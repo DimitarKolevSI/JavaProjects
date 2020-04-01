@@ -3,7 +3,7 @@ package Shop;
 public class User {
     private static long IDHelper = 30000;
     protected long ID;
-    private ShoppingCart shoppingCart;
+    protected ShoppingCart shoppingCart;
 
     protected void setID() {
         ID = IDHelper;
