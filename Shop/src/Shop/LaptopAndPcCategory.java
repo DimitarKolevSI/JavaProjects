@@ -21,6 +21,16 @@ public class LaptopAndPcCategory extends Product {
         setVideoCard("");
     }
 
+    public LaptopAndPcCategory(LaptopAndPcCategory old){
+        super(old);
+        setBrand(old.Brand);
+        setProcessor(old.Processor);
+        setHD(old.HD);
+        setRAM(old.RAM);
+        setMotherBoard(old.MotherBoard);
+        setVideoCard(old.VideoCard);
+    }
+
     public LaptopAndPcCategory(Product old, String brand, String processor, int HD, int RAM, String motherBoard, String videoCard){
         super(old);
         setBrand(brand);
@@ -40,6 +50,7 @@ public class LaptopAndPcCategory extends Product {
         setMotherBoard(motherBoard);
         setVideoCard(videoCard);
     }
+
 
 
     private void setBrand(String brand) {
@@ -106,14 +117,12 @@ public class LaptopAndPcCategory extends Product {
 
     @Override
     public String toString() {
-        return "LaptopAndPcCategory{" +
-                super.toString() +
-                "Brand='" + Brand + '\'' +
+        return  super.toString() +
+                ", Brand='" + Brand + '\'' +
                 ", Processor='" + Processor + '\'' +
                 ", HD=" + HD +
                 ", RAM=" + RAM +
                 ", MotherBoard='" + MotherBoard + '\'' +
-                ", VideoCard='" + VideoCard + '\'' +
-                '}';
+                ", VideoCard='" + VideoCard + '\'';
     }
 }
