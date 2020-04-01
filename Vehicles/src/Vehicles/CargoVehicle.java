@@ -19,7 +19,7 @@ public class CargoVehicle extends Vehicle {
             return false;
     }
 
-    public boolean voidCargo(int goods){
+    public boolean unloadCargo(int goods){
         int newWeight = CurrentWeight - goods;
         if(newWeight > 0 && goods > 0){
             CurrentWeight = newWeight;

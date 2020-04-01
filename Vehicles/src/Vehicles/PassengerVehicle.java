@@ -50,5 +50,6 @@ public class PassengerVehicle extends Vehicle{
     @Override
     public void travel(int travelDistance) {
         Amortisation += travelDistance*(Weight + CurrentPassengers*70);
+        Distance += travelDistance;
     }
 }

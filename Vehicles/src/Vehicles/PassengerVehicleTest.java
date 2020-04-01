@@ -43,7 +43,25 @@ public class PassengerVehicleTest {
         assertEquals(20,p.getPassengers());
     }
 
+    @Test
+    public void testFive(){
+        p.pickPassengers(20);
+        p.dropPassengers(10);
 
+        assertEquals(10,p.getPassengers());
+    }
 
+    @Test
+    public void testSix(){
+        p.pickPassengers(10);
+        p.travel(100);
 
+        assertEquals(120000,p.getAmortisation());
+        assertEquals(100,p.getDistance());
+    }
+
+    @Test
+    public void testSeven(){
+        assertEquals(-1,p.dropPassengers(-20));
+    }
 }
