@@ -9,7 +9,6 @@ public abstract class Vehicle {
         Distance = 0;
         Amortisation = 0;
     }
-
     public Vehicle(int weight){
         Weight = weight;
         Distance = 0;

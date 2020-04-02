@@ -43,6 +43,7 @@ public class PassengerVehicle extends Vehicle{
             return -1;
     }
 
+
     public int getPassengers(){
         return CurrentPassengers;
     }

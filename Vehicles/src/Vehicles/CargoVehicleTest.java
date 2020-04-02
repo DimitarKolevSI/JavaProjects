@@ -44,6 +44,7 @@ public class CargoVehicleTest {
         assertEquals(100,cv.getCargo());
     }
 
+
     @Test
     public void TestSix(){
         cv.loadCargo(100);
