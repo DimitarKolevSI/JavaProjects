@@ -29,5 +29,6 @@ public class Main {
         vehicles[2] = c;
         vehicles[3] = c1;
         System.out.println(pickPassengersWithVehicles(vehicles, 4,10));
+
     }
 }

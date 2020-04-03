@@ -60,6 +60,7 @@ public class PassengerVehicleTest {
         assertEquals(100,p.getDistance());
     }
 
+
     @Test
     public void testSeven(){
         assertEquals(-1,p.dropPassengers(-20));
