@@ -13,11 +13,10 @@ public class Book implements Comparable{
     private String Genre;
     private String Resume;
     private int Year;
-    private Set<String> KeyWords;
     private double Rating;
     private int NumberOfRatings;
     private static int IDCounter = 1;
-    private int ID;
+    protected int ID;
 
     public Book(){
         Author = "";
@@ -25,34 +24,42 @@ public class Book implements Comparable{
         Genre = "";
         Resume = "";
         Year = 0;
-        KeyWords = new TreeSet<>(Collections.emptySet());
         Rating = 0;
         NumberOfRatings = 0;
         setID();
     }
 
-    public Book(String author, String title, String genre, String resume, int year, String... keyWords){
+    public Book(String author, String title, String genre, String resume, int year){
         Author = author;
         Title = title;
         Genre = genre;
         Resume = resume;
         Year = year;
-        KeyWords = new TreeSet<String>(Arrays.asList(keyWords));
         Rating = 0;
         NumberOfRatings = 0;
         setID();
     }
 
-    public Book(String author, String title, String genre, String resume, int year, double rating, int numberOfRatings,String... keyWords){
+    public Book(String author, String title, String genre, String resume, int year, double rating, int numberOfRatings){
         Author = author;
         Title = title;
         Genre = genre;
         Resume = resume;
         Year = year;
-        KeyWords = new TreeSet<String>(Arrays.asList(keyWords));
         Rating = rating;
         NumberOfRatings = numberOfRatings;
         setID();
+    }
+
+    protected Book(String author, String title, String genre, String resume, int year, double rating, int numberOfRatings, int ID){
+        Author = author;
+        Title = title;
+        Genre = genre;
+        Resume = resume;
+        Year = year;
+        Rating = rating;
+        NumberOfRatings = numberOfRatings;
+        this.ID = ID;
     }
 
     public String getAuthor() {
@@ -73,14 +80,6 @@ public class Book implements Comparable{
 
     public int getYear() {
         return Year;
-    }
-
-    public Set<String> getKeyWords() {
-        return KeyWords;
-    }
-
-    public List<String> getKeyWordsAsList() {
-        return KeyWords.stream().collect(Collectors.toList());
     }
 
     public double getRating() {

@@ -1,0 +1,4 @@
+Dan Brown;eOrigin;Criminal;Dan Brown's new bestseller;2019;1.00;1;1
+Dan Brown;cOrigin;Criminal;Dan Brown's new bestseller;2019;2.50;1;4
+Dan Brown;bOrigin;Criminal;Dan Brown's new bestseller;2019;3.00;1;3
+Dan Brown;dOrigin;Criminal;Dan Brown's new bestseller;2019;5.00;1;5
