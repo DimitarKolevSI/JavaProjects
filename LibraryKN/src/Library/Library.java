@@ -11,7 +11,7 @@ public class Library {
     private File booksRecord = new File("src/Library/Books.txt");
     private File usersRecord = new File("src/Library/Users.txt");
     private File IDCounter = new File("src/Library/IDCounter.txt");
-    private List<Book> Books = new LinkedList<Book>();
+    private Set<Book> Books = new TreeSet<Book>();
     private List<User> Users = new LinkedList<User>();
     private int IDHelper;
 
@@ -140,40 +140,58 @@ public class Library {
         }
     }
 
-    public void sortByTitleDescending() {
-        Comparator<Book> bookComparatorByTitle = Comparator.comparing(
-                Book::getTitle, (s1, s2) -> {
-                    return s2.compareTo(s1);
-                }
-        );
-        Collections.sort(Books, bookComparatorByTitle);
+
+    protected void printBooks(Set<Book> books){
+        Iterator<Book> it = books.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
     }
 
+    public void sortByTitleDescending() {
+        Set<Book> titleDescendingSet = new TreeSet<Book>(new Comparator<Book>(){
+            @Override
+            public int compare(Book o1, Book o2) {
+                return o2.getTitle().compareTo(o1.getTitle());
+            }
+        });
+        titleDescendingSet.addAll(Books);
+        printBooks(titleDescendingSet);
+    }
+
+
     public void sortByTitleAscending() {
-        Comparator<Book> bookComparatorByTitle = Comparator.comparing(
-                Book::getTitle, (s1, s2) -> {
-                    return s1.compareTo(s2);
-                }
-        );
-        Collections.sort(Books, bookComparatorByTitle);
+        Set<Book> titleAscendingSet = new TreeSet<Book>(new Comparator<Book>(){
+            @Override
+            public int compare(Book o1, Book o2) {
+                return o1.getTitle().compareTo(o2.getTitle());
+            }
+        });
+        titleAscendingSet.addAll(Books);
+        printBooks(titleAscendingSet);
     }
 
     public void sortByAuthorDescending() {
-        Comparator<Book> bookComparatorByAuthor = Comparator.comparing(
-                Book::getAuthor, (s1, s2) -> {
-                    return s2.compareTo(s1);
-                }
-        );
-        Collections.sort(Books, bookComparatorByAuthor);
+
+        Set<Book> authorDescendingSet = new TreeSet<Book>(new Comparator<Book>(){
+            @Override
+            public int compare(Book o1, Book o2) {
+                return o2.getAuthor().compareTo(o1.getAuthor());
+            }
+        });
+        authorDescendingSet.addAll(Books);
+        printBooks(authorDescendingSet);
     }
 
     public void sortByAuthorAscending() {
-        Comparator<Book> bookComparatorByAuthor = Comparator.comparing(
-                Book::getAuthor, (s1, s2) -> {
-                    return s1.compareTo(s2);
-                }
-        );
-        Collections.sort(Books, bookComparatorByAuthor);
+        Set<Book> authorAscendingSet = new TreeSet<Book>(new Comparator<Book>(){
+            @Override
+            public int compare(Book o1, Book o2) {
+                return o1.getAuthor().compareTo(o2.getAuthor());
+            }
+        });
+        authorAscendingSet.addAll(Books);
+        printBooks(authorAscendingSet);
     }
 
     public void sortByYearAscending() {
@@ -182,7 +200,12 @@ public class Library {
                     return s1.compareTo(s2);
                 }
         );
-        Collections.sort(Books, bookComparatorByYear);
+        List<Book> list = new ArrayList<Book>();
+        list.addAll(Books);
+        Collections.sort(list, bookComparatorByYear);
+        for(Book book: list){
+            System.out.println(book);
+        }
     }
 
     public void sortByYearDescending() {
@@ -190,17 +213,41 @@ public class Library {
                 Book::getYear, (s1, s2) -> {
                     return s2.compareTo(s1);
                 }
-        );
-        Collections.sort(Books, bookComparatorByYear);
+        ).reversed();
+        List<Book> list = new ArrayList<Book>();
+        list.addAll(Books);
+        Collections.sort(list, bookComparatorByYear);
+        for(Book book: list){
+            System.out.println(book);
+        }
     }
 
     public void sortByRatingAscending() {
-        Comparator<Book> bookComparatorByRating = Comparator.comparing(
-                Book::getRating, (s1, s2) -> {
-                    return s1.compareTo(s2);
-                }
-        );
-        Collections.sort(Books, bookComparatorByRating);
+        Set<Book> ratingAscendingSet = new TreeSet<Book>(new Comparator<Book>(){
+            @Override
+            public int compare(Book o1, Book o2) {
+                /*if(o1.getRating() > o2.getRating()) return -1;
+                if(o1.getRating() < o1.getRating()) return 1;
+                return 0;*/
+                return Double.compare(o1.getRating(),o2.getRating());
+            }
+        });
+        ratingAscendingSet.addAll(Books);
+        printBooks(ratingAscendingSet);
+    }
+
+    public void sortByRatingDescending() {
+        Set<Book> ratingAscendingSet = new TreeSet<Book>(new Comparator<Book>(){
+            @Override
+            public int compare(Book o1, Book o2) {
+                /*if(o1.getRating() > o2.getRating()) return -1;
+                if(o1.getRating() < o1.getRating()) return 1;
+                return 0;*/
+                return -Double.compare(o1.getRating(),o2.getRating());
+            }
+        });
+        ratingAscendingSet.addAll(Books);
+        printBooks(ratingAscendingSet);
     }
 
     public void addUser(User user, String username, String password) throws AuthenticationNotSupportedException, IOException {
@@ -219,6 +266,13 @@ public class Library {
         }
     }
 
+    protected void rewriteUsersFile() throws IOException {
+        FileWriter fileWriter = new FileWriter(usersRecord);
+        for (User user : Users) {
+            addNewUserToTheFile(user);
+        }
+    }
+
     public void removeBook(String title) throws IOException {
         Iterator<Book> it = Books.iterator();
         while (it.hasNext()) {
@@ -229,4 +283,17 @@ public class Library {
         }
         rewriteBookFile();
     }
+
+    public void removeUser(String username) throws IOException {
+        Iterator<User> it = Users.iterator();
+        while (it.hasNext()) {
+            User user = it.next();
+            if (user.Username.equals(username)) {
+                it.remove();
+            }
+        }
+        rewriteUsersFile();
+    }
+
+
 }
