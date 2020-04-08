@@ -1,56 +1,55 @@
 package Library;
-
 import javax.security.auth.login.LoginException;
 
 public class User implements Comparable {
-    protected String Username;
-    protected String Password;
-    protected LevelOfAccess levelOfAccess;
-    protected boolean LoggedIn;
+    protected String username;
+    protected String password;
+    protected Role role;
+    protected boolean loggedIn;
 
     public User(){
-        Username = "";
-        Password = "";
-        levelOfAccess = LevelOfAccess.User;
-        LoggedIn = false;
+        username = "";
+        password = "";
+        role = Role.User;
+        loggedIn = false;
     }
 
     public User(String username, String password){
-        Username = username;
-        Password = password;
-        levelOfAccess = LevelOfAccess.User;
-        LoggedIn = false;
+        this.username = username;
+        this.password = password;
+        role = Role.User;
+        loggedIn = false;
     }
 
-    public User(String username, String password, LevelOfAccess access){
-        Username = username;
-        Password = password;
-        levelOfAccess = access;
-        LoggedIn = false;
+    public User(String username, String password, Role access){
+        this.username = username;
+        this.password = password;
+        role = access;
+        loggedIn = false;
     }
 
     public void changeUsername(String newUsername) throws LoginException {
-        if(LoggedIn == false)
+        if(loggedIn == false)
             throw new LoginException();
-        Username = newUsername;
+        username = newUsername;
     }
 
     public boolean isLoggedIn(){
-        return LoggedIn;
+        return loggedIn;
     }
 
-    public LevelOfAccess getLevelOfAccess(){
-        return levelOfAccess;
+    public Role getRole(){
+        return role;
     }
 
     public String getUsername(){
-        return Username;
+        return username;
     }
 
     @Override
     public int compareTo(Object o) throws IllegalArgumentException {
         if(! (o instanceof User))
             throw new IllegalArgumentException("You cant compare User to other class!");
-        return Username.compareTo(((User) o).Username);
+        return username.compareTo(((User) o).username);
     }
 }

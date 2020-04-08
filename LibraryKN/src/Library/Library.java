@@ -8,12 +8,12 @@ import java.io.IOException;
 import java.util.*;
 
 public class Library {
-    private File booksRecord = new File("src/Library/Books.txt");
-    private File usersRecord = new File("src/Library/Users.txt");
-    private File IDCounter = new File("src/Library/IDCounter.txt");
-    private Set<Book> Books = new TreeSet<Book>();
-    private Set<User> Users = new TreeSet<User>();
-    private int IDHelper;
+    private static final File BOOKS_RECORD = new File("src/Library/Books.txt");
+    private static final File USERS_RECORD = new File("src/Library/Users.txt");
+    private static final File ID_COUNTER = new File("src/Library/IDCounter.txt");
+    private Set<Book> books = new HashSet<Book>();
+    private Set<User> users = new HashSet<User>();
+    private static int IDHelper;
 
 
     public Library() throws IOException {
@@ -24,12 +24,12 @@ public class Library {
 
     public User logIn(String username, String password){
         User currentUser = null;
-        for (User user : Users) {
-            if (user.Username.equals(username) && user.Password.equals(password)) {
+        for (User user : users) {
+            if (user.username.equals(username) && user.password.equals(password)) {
                 currentUser = user;
-                if (!user.LoggedIn) {
-                    user.LoggedIn = true;
-                    System.out.println("Welcome " + user.Username);
+                if (!user.loggedIn) {
+                    user.loggedIn = true;
+                    System.out.println("Welcome " + user.username);
                 } else
                     System.out.println("You are already logged in!");
             }
@@ -46,16 +46,16 @@ public class Library {
             System.out.println("You need to log in first!");
             return;
         }
-        if (user.LoggedIn) {
-            user.LoggedIn = false;
-            System.out.printf("Come back soon %s!%n",user.Username);
+        if (user.loggedIn) {
+            user.loggedIn = false;
+            System.out.printf("Come back soon %s!%n",user.username);
         } else
             System.out.println("You aren't logged in!");
     }
 
     protected void loadIDCounterFromFile(){
         try{
-            Scanner scanner = new Scanner(IDCounter);
+            Scanner scanner = new Scanner(ID_COUNTER);
             String line = scanner.nextLine();
             IDHelper = Integer.parseInt(line);
         }
@@ -66,16 +66,16 @@ public class Library {
 
     protected void loadUsersFromFile() {
         try {
-            Scanner scanner = new Scanner(usersRecord);
+            Scanner scanner = new Scanner(USERS_RECORD);
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] info = line.split(" ");
-                LevelOfAccess authority;
+                Role authority;
                 if (info[2].equals("Administrator"))
-                    authority = LevelOfAccess.Administrator;
+                    authority = Role.Administrator;
                 else
-                    authority = LevelOfAccess.User;
-                Users.add(new User(info[0], info[1], authority));
+                    authority = Role.User;
+                users.add(new User(info[0], info[1], authority));
             }
         }
         catch(FileNotFoundException fnfe){
@@ -85,7 +85,7 @@ public class Library {
 
     protected void loadBooksFromFile() {
         try {
-            Scanner scanner = new Scanner(booksRecord);
+            Scanner scanner = new Scanner(BOOKS_RECORD);
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] info = line.split(";");
@@ -98,7 +98,7 @@ public class Library {
                 int numberOfRatings = Integer.parseInt(info[6]);
                 int ID = Integer.parseInt(info[7]);
                 String[] keyWords = scanner.nextLine().split(" ");
-                Books.add(new Book(author, title, genre, resume, year, rating, numberOfRatings, ID,keyWords));
+                books.add(Book.Builder.newInstance().withAuthor(author).withTitle(title).withGenre(genre).withResume(resume).withYear(year).withRating(rating).withID(ID).withKeyWords(keyWords).build());
             }
         }
         catch(FileNotFoundException fnfe){
@@ -107,14 +107,14 @@ public class Library {
     }
 
     protected void addNewUserToTheFile(User user) throws IOException {
-        FileWriter fileWriter = new FileWriter(usersRecord, true);
-        fileWriter.write(String.format("%s %s %s%n", user.Username, user.Password, user.levelOfAccess));
+        FileWriter fileWriter = new FileWriter(USERS_RECORD, true);
+        fileWriter.write(String.format("%s %s %s%n", user.username, user.password, user.role));
         fileWriter.close();
     }
 
     protected void addNewBookToTheFile(Book book) throws IOException {
-        FileWriter fileWriter = new FileWriter(booksRecord, true);
-        fileWriter.write(String.format(Locale.US, "%s;%s;%s;%s;%d;%.2f;%d;%d%n", book.getAuthor(), book.getTitle(), book.getGenre(), book.getResume(), book.getYear(), book.getRating(), book.getNumberOfRatings(), book.getID()));
+        FileWriter fileWriter = new FileWriter(BOOKS_RECORD, true);
+        fileWriter.write(String.format(Locale.US, "%s;%s;%s;%s;%d;%.2f;%d;%n", book.getAuthor(), book.getTitle(), book.getGenre(), book.getResume(), book.getYear(), book.getRating(),book.getID()));
         for(String word:book.getKeyWords()){
             fileWriter.write(String.format("%s ",word));
         }
@@ -133,17 +133,17 @@ public class Library {
         }
         newBook.ID = IDHelper;
         IDHelper++;
-        Books.add(newBook);
+        books.add(newBook);
     }
 
     public void booksAll() {
-        for (Book book : Books) {
+        for (Book book : books) {
             System.out.println(book);
         }
     }
 
     public void booksInfo(int ID) {
-        for (Book book : Books) {
+        for (Book book : books) {
             if (book.getID() == ID) {
                 book.printDetailInfo();
             }
@@ -153,7 +153,7 @@ public class Library {
     public void findBooksByTitle(String title) {
         if(title==null)
             return;
-        for (Book book : Books) {
+        for (Book book : books) {
             if (book.getTitle().equals(title)) {
                 System.out.println(book);
             }
@@ -163,7 +163,7 @@ public class Library {
     public void findBooksByAuthor(String author) {
         if(author == null)
             return;
-        for (Book book : Books) {
+        for (Book book : books) {
             if (book.getAuthor().equals(author)) {
                 System.out.println(book);
             }
@@ -173,7 +173,7 @@ public class Library {
     public void findBooksByTag(String word){
         if(word==null)
             return;
-        for(Book book: Books){
+        for(Book book: books){
             if(book.getKeyWords().contains(word))
                 book.printDetailInfo();
         }
@@ -192,7 +192,7 @@ public class Library {
                 return o2.getTitle().compareTo(o1.getTitle());
             }
         });
-        titleDescendingSet.addAll(Books);
+        titleDescendingSet.addAll(books);
         printBooks(titleDescendingSet);
     }
 
@@ -203,7 +203,7 @@ public class Library {
                 return o1.getTitle().compareTo(o2.getTitle());
             }
         });
-        titleAscendingSet.addAll(Books);
+        titleAscendingSet.addAll(books);
         printBooks(titleAscendingSet);
     }
 
@@ -215,7 +215,7 @@ public class Library {
                 return o2.getAuthor().compareTo(o1.getAuthor());
             }
         });
-        authorDescendingSet.addAll(Books);
+        authorDescendingSet.addAll(books);
         printBooks(authorDescendingSet);
     }
 
@@ -226,7 +226,7 @@ public class Library {
                 return o1.getAuthor().compareTo(o2.getAuthor());
             }
         });
-        authorAscendingSet.addAll(Books);
+        authorAscendingSet.addAll(books);
         printBooks(authorAscendingSet);
     }
 
@@ -237,7 +237,7 @@ public class Library {
                 }
         );
         List<Book> list = new ArrayList<Book>();
-        list.addAll(Books);
+        list.addAll(books);
         Collections.sort(list, bookComparatorByYear);
         for(Book book: list){
             System.out.println(book);
@@ -251,7 +251,7 @@ public class Library {
                 }
         ).reversed();
         List<Book> list = new ArrayList<Book>();
-        list.addAll(Books);
+        list.addAll(books);
         Collections.sort(list, bookComparatorByYear);
         for(Book book: list){
             System.out.println(book);
@@ -265,7 +265,7 @@ public class Library {
                 return Double.compare(o1.getRating(),o2.getRating());
             }
         });
-        ratingAscendingSet.addAll(Books);
+        ratingAscendingSet.addAll(books);
         printBooks(ratingAscendingSet);
     }
 
@@ -276,7 +276,7 @@ public class Library {
                 return -Double.compare(o1.getRating(),o2.getRating());
             }
         });
-        ratingAscendingSet.addAll(Books);
+        ratingAscendingSet.addAll(books);
         printBooks(ratingAscendingSet);
     }
 
@@ -289,13 +289,13 @@ public class Library {
             System.out.println("You need to log in first!");
         }
         try{
-            if (user.levelOfAccess == LevelOfAccess.Administrator) {
-                User newUser = new User(username, password, LevelOfAccess.User);
-                if(Users.contains(newUser)) {
+            if (user.role == Role.Administrator) {
+                User newUser = new User(username, password, Role.User);
+                if(users.contains(newUser)) {
                     System.out.println("This username is taken! Please try with another!");
                     return;
                 }
-                Users.add(newUser);
+                users.add(newUser);
             } else
                 throw new AuthenticationNotSupportedException("You should be administrator to add users!");
         }
@@ -305,7 +305,7 @@ public class Library {
     }
 
     public void removeBook(int ID) {
-        Iterator<Book> it = Books.iterator();
+        Iterator<Book> it = books.iterator();
         while (it.hasNext()) {
             Book book = it.next();
             if (book.getID() == ID) {
@@ -315,31 +315,31 @@ public class Library {
     }
 
     public void removeUser(String username) {
-        Iterator<User> it = Users.iterator();
+        Iterator<User> it = users.iterator();
         while (it.hasNext()) {
             User user = it.next();
-            if (user.Username.equals(username)) {
+            if (user.username.equals(username)) {
                 it.remove();
             }
         }
     }
 
     protected void rewriteBookFile() throws IOException {
-        FileWriter fileWriter = new FileWriter(booksRecord);
-        for (Book book : Books) {
+        FileWriter fileWriter = new FileWriter(BOOKS_RECORD);
+        for (Book book : books) {
             addNewBookToTheFile(book);
         }
     }
 
     protected void rewriteUsersFile() throws IOException {
-        FileWriter fileWriter = new FileWriter(usersRecord);
-        for (User user : Users) {
+        FileWriter fileWriter = new FileWriter(USERS_RECORD);
+        for (User user : users) {
             addNewUserToTheFile(user);
         }
     }
 
     protected void refreshIDCounter() throws IOException {
-            FileWriter fw = new FileWriter(IDCounter);
+            FileWriter fw = new FileWriter(ID_COUNTER);
             fw.write(String.format("%d", IDHelper));
             fw.close();
     }

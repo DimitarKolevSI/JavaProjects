@@ -3,15 +3,14 @@ package Main;
 import Library.Library;
 import Library.User;
 import Library.Book;
-import Library.LevelOfAccess;
+import Library.Role;
 
-import javax.naming.AuthenticationNotSupportedException;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, AuthenticationNotSupportedException {
+    public static void main(String[] args) throws IOException{
         /*File booksRecord = new File("src/Library/Books.txt");
         if(booksRecord.createNewFile()) System.out.println("New file was created!");
         else System.out.println("The file is already created");
@@ -106,7 +105,7 @@ public class Main {
                     else if(Option.equals("rating") && Order.equals("asc")) l.sortByRatingAscending();
                     else if(Option.equals("rating") && Order.equals("desc")) l.sortByRatingDescending();
                 }
-                else if(commands[1].equals("add") && currentUser.getLevelOfAccess() == LevelOfAccess.Administrator){
+                else if(commands[1].equals("add") && currentUser.getRole() == Role.Administrator){
                     System.out.print("Author: ");
                     String Author = scanner.nextLine();
                     System.out.print("Title: ");
@@ -121,16 +120,16 @@ public class Main {
                     System.out.print("Year: ");
                     line = scanner.nextLine();
                     int Year = Integer.parseInt(line);
-                    l.addBook(new Book(Author,Title, Genre, Resume, Year,keyWords));
+                    l.addBook(Book.Builder.newInstance().withAuthor(Author).withTitle(Title).withGenre(Genre).withResume(Resume).withYear(Year).withKeyWords(keyWords).build());
                 }
-                else if(commands[1].equals("remove") && currentUser.getLevelOfAccess() == LevelOfAccess.Administrator){
+                else if(commands[1].equals("remove") && currentUser.getRole() == Role.Administrator){
                     System.out.println("ID: ");
                     int ID = scanner.nextInt();
                     l.removeBook(ID);
                 }
             }
             else if(commands[0].equals("users")){
-                if(currentUser == null || currentUser.getLevelOfAccess() != LevelOfAccess.Administrator)
+                if(currentUser == null || currentUser.getRole() != Role.Administrator)
                     System.out.println("You need to log in as administrator first");
                 else if(commands[1].equals("add")){
                     l.addUser(currentUser,commands[2],commands[3]);

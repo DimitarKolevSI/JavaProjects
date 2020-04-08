@@ -1,143 +1,150 @@
 package Library;
 
-import java.io.File;
 import java.util.*;
 
 public class Book implements Comparable{
-    private String Author;
-    private String Title;
-    private String Genre;
-    private String Resume;
-    private int Year;
-    private double Rating;
-    private int NumberOfRatings;
-    private static int IDCounter = 1;
-    Set<String> KeyWords = null;
+
+    private final String author;
+    private final String title;
+    private final String genre;
+    private final String resume;
+    private final int year;
+    private final double rating;
+    private final Set<String> keyWords;
     protected int ID;
 
-    public Book(){
-        Author = "";
-        Title = "";
-        Genre = "";
-        Resume = "";
-        Year = 0;
-        Rating = 0;
-        NumberOfRatings = 0;
-        KeyWords = new TreeSet<String>();
-        setID();
+    public static class Builder{
+        private String author;
+        private String title;
+        private String genre;
+        private String resume;
+        private int year;
+        private double rating;
+        private int IDCounter = 1;
+        private Set<String> keyWords;
+        protected int ID;
+
+        public Builder(){
+            ID = IDCounter;
+            IDCounter++;
+        }
+
+        public static Builder newInstance() {
+            return new Builder();
+        }
+
+        public Builder withAuthor(String author){
+            this.author = author;
+            return this;
+        }
+
+        public Builder withTitle(String title){
+            this.title = title;
+            return this;
+        }
+
+        public Builder withGenre(String genre){
+            this.genre = genre;
+            return this;
+        }
+
+        public Builder withResume(String resume){
+            this.resume = resume;
+            return this;
+        }
+
+        public Builder withYear(int year){
+            this.year = year;
+            return this;
+        }
+
+        public Builder withRating(double rating){
+            this.rating = rating;
+            return this;
+        }
+
+        public Builder withKeyWords(Set<String> keyWords){
+            this.keyWords = keyWords;
+            return this;
+        }
+
+        public Builder withKeyWords(String... keyWords){
+            this.keyWords = new HashSet<String>(Arrays.asList(keyWords));
+            return this;
+        }
+
+        protected Builder withID(int ID){
+            this.ID = ID;
+            return this;
+        }
+
+        public Book build(){
+            return new Book(this);
+        }
     }
 
-    public Book(String author, String title, String genre, String resume, int year){
-        Author = author;
-        Title = title;
-        Genre = genre;
-        Resume = resume;
-        Year = year;
-        Rating = 0;
-        NumberOfRatings = 0;
-        KeyWords = new TreeSet<>();
-        setID();
-    }
 
-    public Book(String author, String title, String genre, String resume, int year, String... keyWords){
-        Author = author;
-        Title = title;
-        Genre = genre;
-        Resume = resume;
-        Year = year;
-        Rating = 0;
-        NumberOfRatings = 0;
-        KeyWords = new TreeSet<String>(Arrays.asList(keyWords));
-        setID();
-    }
-
-    public Book(String author, String title, String genre, String resume, int year, double rating, int numberOfRatings, String... keyWords){
-        Author = author;
-        Title = title;
-        Genre = genre;
-        Resume = resume;
-        Year = year;
-        Rating = rating;
-        NumberOfRatings = numberOfRatings;
-        KeyWords = new TreeSet<String>(Arrays.asList(keyWords));
-        setID();
-    }
-
-    protected Book(String author, String title, String genre, String resume, int year, double rating, int numberOfRatings, int ID,String... keyWords){
-        Author = author;
-        Title = title;
-        Genre = genre;
-        Resume = resume;
-        Year = year;
-        Rating = rating;
-        NumberOfRatings = numberOfRatings;
-        KeyWords = new TreeSet<String>(Arrays.asList(keyWords));
-        this.ID = ID;
+    private Book(Builder builder){
+        this.title = builder.title;
+        this.author = builder.author;
+        this.genre = builder.genre;
+        this.resume = builder.resume;
+        this.keyWords = builder.keyWords;
+        this.ID = builder.ID;
+        this.rating = builder.rating;
+        this.year = builder.year;
     }
 
     public String getAuthor() {
-        return Author;
+        return author;
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public String getGenre() {
-        return Genre;
+        return genre;
     }
 
     public String getResume() {
-        return Resume;
+        return resume;
     }
 
     public int getYear() {
-        return Year;
+        return year;
     }
 
     public double getRating() {
-        return Rating;
-    }
-
-    public int getNumberOfRatings() {
-        return NumberOfRatings;
+        return rating;
     }
 
     public int getID() {
         return ID;
     }
 
+    protected void setID(int newID){
+        this.ID = newID;
+    }
+
     public String getKeyWordsAsArray(){
-        return KeyWords.toString();
+        return keyWords.toString();
     }
 
     public Set<String> getKeyWords(){
-        return KeyWords;
+        return keyWords;
     }
 
     public void addKeyWord(String word){
         if(word == null)
             return;
-        KeyWords.add(word);
-    }
-
-    private void setID(){
-        ID = IDCounter;
-        IDCounter++;
-    }
-
-    public void rateBook(double rating)throws IllegalArgumentException{
-        if(rating < 0 || rating > 10)
-            throw new IllegalArgumentException("Rating should be between 0 and 10");
-        double newRating = (getNumberOfRatings()*getRating() + rating)/(getNumberOfRatings() + 1);
-        this.Rating = rating;
-        NumberOfRatings++;
+        keyWords.add(word);
     }
 
     public void printDetailInfo(){
         System.out.printf("Title: %s, Author: %s, Genre: %s, Year: %d, Rating: %.2f, ID: %d%n",getTitle(),getAuthor(),getGenre(),getYear(),getRating(),getID());
         System.out.print("Key words: ");
-        for(String word:KeyWords){
+        for(String word: keyWords){
             System.out.print(word + " ");
         }
         System.out.println();
@@ -145,9 +152,9 @@ public class Book implements Comparable{
 
     @Override
     public String toString() {
-        return "Title='" + Title + '\'' +
-                ", Author='" + Author + '\'' +
-                ", Genre='" + Genre + '\'' +
+        return "Title='" + title + '\'' +
+                ", Author='" + author + '\'' +
+                ", Genre='" + genre + '\'' +
                 ", ID=" + ID;
     }
 

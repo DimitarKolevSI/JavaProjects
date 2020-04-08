@@ -14,3 +14,7 @@ sOrigin;sDan Brown;Criminal;Dan Brown's new hit;2020;0.00;0;8
 k key something word 
 sOrigin;sDan Brown;Criminal;Dan Brown's new hit;2020;0.00;0;9
 k key something word 
+J.K.Rowling;Harry Potter and The Goblet Of Fire;Fantastic;Incredible novel from the British writer!;2001;0.00;0;10
+adventure magic magic school magician 
+Nicolas Sparks;The Notebook;Romantic;Love story;1999;0.00;0;11
+drama love rom romantic sparks story 
