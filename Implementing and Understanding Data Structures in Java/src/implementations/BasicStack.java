@@ -1,6 +1,6 @@
 package implementations;
 
-public class BasicStack<X> {
+public class BasicStack<X> implements StackInt {
     private X[] elements;
     //variable to point where to put the new element
     private int stackPointer;
@@ -11,11 +11,11 @@ public class BasicStack<X> {
         stackPointer = 0;
     }
 
-    public void push(X newElement)
+    public void push(Object newElement)
     {
         //Set the element on the stackPointer position to newElement and increase
         //the position pointer
-        elements[stackPointer++] = newElement;
+        elements[stackPointer++] = (X) newElement;
     }
 
     public X pop()
@@ -29,7 +29,7 @@ public class BasicStack<X> {
         return elements[--stackPointer];
     }
 
-    public boolean contains(X item)
+    public boolean contains(Object item)
     {
         //Check linear to see if one of the items is equal to the item we are searching
         for (int i=0;i<stackPointer;i++){
@@ -43,7 +43,7 @@ public class BasicStack<X> {
         return false;
     }
 
-    public X access(X item)
+    public X access(Object item)
     {
         //Looping while the stack is not empty
         while(stackPointer > 0)
