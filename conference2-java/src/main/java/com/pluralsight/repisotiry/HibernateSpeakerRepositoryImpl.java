@@ -7,16 +7,14 @@ import java.util.List;
 
 public class HibernateSpeakerRepositoryImpl implements SpeakerRepository {
 
+    private List<Speaker> speakers = new ArrayList<>();
+
     public List<Speaker> findAll()
     {
-        List<Speaker> speakers = new ArrayList<>();
-
-        Speaker speaker = new Speaker();
-        speaker.setFirstName("Dimitar");
-        speaker.setLastName("Kolev");
-
-        speakers.add(speaker);
-
         return speakers;
+    }
+
+    public void addSpeaker(Speaker speaker){
+        speakers.add(speaker);
     }
 }

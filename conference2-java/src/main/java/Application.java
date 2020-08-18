@@ -1,12 +1,25 @@
+import com.pluralsight.model.Speaker;
 import com.pluralsight.service.SpeakerService;
 import com.pluralsight.service.SpeakerServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContextExtensionsKt;
+
+import java.sql.SQLOutput;
+import java.util.List;
 
 public class Application {
 
     public static void main(String... args) {
-        SpeakerService service = new SpeakerServiceImpl();
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        System.out.println(service.findAll().get(0).getFirstName());
+        //SpeakerService service = new SpeakerServiceImpl();
+
+        SpeakerService service = applicationContext.getBean("speakerService", SpeakerService.class);
+
+        List<Speaker> speakers = service.findAll();
+        Speaker speaker = speakers.get(0);
+        System.out.printf("The speaker is: %s %s%n", speaker.getFirstName(), speaker.getLastName());
     }
 
 }
