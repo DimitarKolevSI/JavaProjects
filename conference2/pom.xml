@@ -8,6 +8,14 @@
     <artifactId>conference</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.2.0.RELEASE</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
