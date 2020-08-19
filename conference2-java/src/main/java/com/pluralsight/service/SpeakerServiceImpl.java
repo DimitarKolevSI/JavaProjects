@@ -10,6 +10,10 @@ public class SpeakerServiceImpl implements SpeakerService {
 
     private SpeakerRepository repository;
 
+    public SpeakerServiceImpl (SpeakerRepository speakerRepository){
+        repository = speakerRepository;
+    }
+
     public List<Speaker> findAll() {
         return repository.findAll();
     }
