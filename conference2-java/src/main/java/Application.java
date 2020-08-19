@@ -17,15 +17,14 @@ public class Application {
 
         System.out.println(service);
 
-        SpeakerService service2 = applicationContext.getBean("speakerService", SpeakerService.class);
-
-        System.out.println(service2);
+        /*
+            SpeakerService service2 = applicationContext.getBean("speakerService", SpeakerService.class);
+            System.out.println(service2);
+        */
 
         List<Speaker> speakers = service.findAll();
-
         for(Speaker speaker:speakers){
             System.out.printf("The speaker is: %s %s%n", speaker.getFirstName(), speaker.getLastName());
-            System.out.println("And the address is " + speaker);
         }
     }
 

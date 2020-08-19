@@ -4,6 +4,7 @@ import com.pluralsight.repisotiry.SpeakerRepository;
 import com.pluralsight.service.SpeakerService;
 import com.pluralsight.service.SpeakerServiceImpl;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -11,19 +12,23 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import java.util.Random;
 
 @Configuration
+@ComponentScan({"com.pluralsight"})
 public class AppConfig {
     private String[] firstNames = new String[]{"Dimitar","Ivan","Petar"};
     private String[] lastNames = new String[]{"Dimitrov","Ivanov","Petrov"};
 
+    /*
     @Bean(name = "speakerService")
     @Scope(value=BeanDefinition.SCOPE_SINGLETON)
     public SpeakerService getSpeakerService(){
         //Constructor injection
-        SpeakerServiceImpl service = new SpeakerServiceImpl(getSpeakerRepository());
+        //SpeakerServiceImpl service = new SpeakerServiceImpl(getSpeakerRepository());
         //Setter injection
+        SpeakerServiceImpl service = new SpeakerServiceImpl();
         //service.setRepository(getSpeakerRepository());
         return service;
     }
+
 
     @Bean(name = "speakerRepository")
     public SpeakerRepository getSpeakerRepository(){
@@ -36,7 +41,7 @@ public class AppConfig {
         repository.addSpeaker(generateSpeakers());
         //Returning the hardcoded repository
         return repository;
-    }
+    }*/
 
     /**
      * Simple function that generates two random indexes thus creating a speaker with names chosen
@@ -50,9 +55,7 @@ public class AppConfig {
         Random random = new Random();
         int firstNameIndex = random.nextInt(firstNames.length);
         int lastNameIndex = random.nextInt(lastNames.length);
-        Speaker speaker = new Speaker();
-        speaker.setFirstName(firstNames[firstNameIndex]);
-        speaker.setLastName(lastNames[lastNameIndex]);
+        Speaker speaker = new Speaker(firstNames[firstNameIndex],lastNames[lastNameIndex]);
         return speaker;
     }
 }
