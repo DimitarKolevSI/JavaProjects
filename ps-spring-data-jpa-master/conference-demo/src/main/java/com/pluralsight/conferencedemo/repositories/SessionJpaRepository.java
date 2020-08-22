@@ -28,5 +28,6 @@ public interface SessionJpaRepository extends JpaRepository<Session, Long> {
     List<Session> findBySessionNameLike(String name);
     List<Session> findBySessionNameStartsWith(String name);
     List<Session> findBySessionNameEndsWith(String name);
-    List<Session> findAll();
+    List<Session> findBySessionLengthLessThan(Integer sessionLength);
+    List<Session> findBySessionLengthGreaterThan(Integer sessionLength);
 }
