@@ -22,4 +22,11 @@ public interface SessionJpaRepository extends JpaRepository<Session, Long> {
         If we are sure that the query will return one object we use Session (for example)
         If we are counting something we use Long
      */
+
+    List<Session> findBySessionLengthNot(Integer sessionLength);
+    List<Session> findBySessionNameNotLike(String name);
+    List<Session> findBySessionNameLike(String name);
+    List<Session> findBySessionNameStartsWith(String name);
+    List<Session> findBySessionNameEndsWith(String name);
+    List<Session> findAll();
 }
