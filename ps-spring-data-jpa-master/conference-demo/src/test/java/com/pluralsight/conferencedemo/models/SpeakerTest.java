@@ -85,5 +85,11 @@ public class SpeakerTest {
         assertTrue(speakers.size() > 0);
     }
 
+    @Test
+    public void testJpaIgnoreCase() throws Exception{
+        List<Speaker> speakers = repository.findByCompanyIgnoreCase("national bank");
+        assertTrue(speakers.size() > 0);
+    }
+
 
 }
