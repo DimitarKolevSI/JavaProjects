@@ -100,5 +100,24 @@ public class SpeakerTest {
         assertTrue(speakers.size() > 0);
     }
 
+    @Test
+    public void testJpaFirst() throws Exception{
+        Speaker speaker = repository.findFirstByFirstName("James");
+        assertTrue(speaker.getFirstName().equals("James"));
+    }
+
+    @Test
+    public void testJpaTop5() throws Exception{
+        List<Speaker> speaker = repository.findTop5BySpeakerPhotoNull();
+        assertTrue(speaker.size() == 5);
+    }
+
+    @Test
+    public void testJpaDistinct() throws Exception{
+        List<Speaker> speaker = repository.findDistinctBySpeakerPhotoNull();
+        System.out.println(speaker.size());
+        assertTrue(speaker.size() > 0);
+    }
+
 
 }
