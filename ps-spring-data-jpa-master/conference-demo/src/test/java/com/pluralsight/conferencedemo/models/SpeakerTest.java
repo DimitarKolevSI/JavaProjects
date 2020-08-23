@@ -91,5 +91,14 @@ public class SpeakerTest {
         assertTrue(speakers.size() > 0);
     }
 
+    @Test
+    public void testJpaOrderBy() throws Exception{
+        List<Speaker> speakers = repository.findByLastNameOrderByFirstNameAsc("Perry");
+        for(Speaker speaker:speakers){
+            System.out.println(speaker.getFirstName());
+        }
+        assertTrue(speakers.size() > 0);
+    }
+
 
 }
