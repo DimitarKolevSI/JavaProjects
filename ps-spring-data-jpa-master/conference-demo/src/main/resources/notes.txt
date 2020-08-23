@@ -1,1 +1,5 @@
 And/Or - same as in the SQL but names of the method become very long
+For dates we can use:
+-Before(lessThan)
+-After(greaterThan)
+-Between(it needs two parameters)
