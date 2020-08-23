@@ -10,6 +10,7 @@ import java.util.List;
 
 @Repository
 public class SessionRepository {
+
     @Autowired
     private SessionJpaRepository jpaRepository;
 

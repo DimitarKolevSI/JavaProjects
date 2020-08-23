@@ -62,5 +62,19 @@ public class SpeakerTest {
                 findByFirstNameOrLastName("Justin","Clark");
         assertTrue(speakers.size() > 0);
     }
+    @Test
+    public void testJpaNull() throws Exception {
+        List<Speaker> speakers = repository.
+                findBySpeakerPhotoNull();
+        assertTrue(speakers.size() > 0);
+    }
+    @Test
+    public void testJpaNotNull() throws Exception {
+        List<Speaker> speakers = repository.
+                findBySpeakerPhotoIsNotNull();
+        assertTrue(speakers.size() == 0);
+    }
+
+
 
 }
