@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -75,6 +76,14 @@ public class SpeakerTest {
         assertTrue(speakers.size() == 0);
     }
 
+    @Test
+    public void testJpaIn() throws Exception{
+        List<String> companies = new ArrayList<>();
+        companies.add("National Bank");
+        companies.add("Contoso");
+        List<Speaker> speakers = repository.findByCompanyIn(companies);
+        assertTrue(speakers.size() > 0);
+    }
 
 
 }
