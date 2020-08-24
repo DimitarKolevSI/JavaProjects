@@ -30,3 +30,6 @@ List<TicketPrice> namedFindTicketsByPricingCategoryName(@Param("name") String na
 or
 @Query(name="TicketPrice.namedFindTicketsByPricingCategoryName")
 List<TicketPrice> getTicketsByPricingCategoryName(@Param("name") String name);
+
+@NamedNativeQuery(name="...",query="...")
+public class TicketPrice{...}

@@ -16,4 +16,6 @@ public interface TicketPriceJpaRepository extends JpaRepository<TicketPrice,Long
     List<TicketPrice> getTicketsUnderPriceWithWorkShop(BigDecimal maxPrice);
 
     List<TicketPrice> namedFindTicketsByPricingCategoryName(@Param("name") String name);
+
+    List<TicketPrice> nativeFindTicketsByCategoryWithWorkshop(@Param("name") String name);
 }
