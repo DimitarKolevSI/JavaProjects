@@ -1,1 +1,19 @@
 And/Or - same as in the SQL but names of the method become very long
+
+Named parameters:
+@Query("select tp from TicketPrice tp where tp.basePrice < :maxprice" +
+    "and tp.ticketType.includesWorkshop=true")
+List<TicketPrice> getTicketUnderPriceWithWorkshops(@Param("maxprice") BigDecimal maxPrice)
+
+Enhanced JPQL Syntax
+@Query("select s from Session s where s.sessionName like %?1")
+List<Session>getSessionsWithName(String name)
+
+Native SQL Queries
+@Query("select * from Session s where s.sessionName like ?0",nativeQuery=true)
+List<Session>getSessionsWithName(String name)
+
+Modifiable Queries
+@Modifying
+@Query("update Session s set s.sessionName = ?1")
+int updateSessionName(String name)
