@@ -17,3 +17,16 @@ Modifiable Queries
 @Modifying
 @Query("update Session s set s.sessionName = ?1")
 int updateSessionName(String name)
+
+Queries validated at app startup
+@Entity
+@NamedQuery(
+name="TicketPrice.namedFindTicketsByPricingCategoryName",
+query="select tp from TicketPrice tp where tp.pricingCategory.pricingCategoryName = :name"
+)
+public class TicketPrice{...}
+
+List<TicketPrice> namedFindTicketsByPricingCategoryName(@Param("name") String name);
+or
+@Query(name="TicketPrice.namedFindTicketsByPricingCategoryName")
+List<TicketPrice> getTicketsByPricingCategoryName(@Param("name") String name);
