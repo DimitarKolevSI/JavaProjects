@@ -99,8 +99,62 @@ public class BookJpa {
         List<Book> books = repository.findByPagesGreaterThan(pages);
         assertTrue(books.size() == 0);
     }
+    /*
+    The tests works. Commenting them out for the sake of not adding rows to the database
+    that we don't need.
+    @Test
+    public void testInsertingBook(){
+        long oldCount = repository.count();
+        Book book = new Book();
+        book.setAuthor("Dan Brown");
+        book.setTitle("Angels & Demon");
+        book.setPages(616);
+        book.setYearPublished(2000);
+        book.setReview("Very impressive and interesting story.");
+        book.setGenre("Thriller");
+        book.setRating(0.0);
+        book.setNumberOfRatings(0);
+        book.setCoverUrl("http://4.bp.blogspot.com/_g3gjaai4a_0/TAhFLcAU7FI/AAAAAAAAAKY/4oHhAR-t-iQ/s1600/book%2Bclip%2Bart.jpg");
+        repository.saveAndFlush(book);
+        long newCount = repository.count();
+        assertTrue(oldCount == newCount - 1);
+    }
 
+    @Test
+    public void testCustomInsertingBook(){
+        long oldCount = repository.count();
+        Book book = new Book();
+        book.setAuthor("Dan Brown");
+        book.setTitle("Inferno");
+        book.setPages(624);
+        book.setYearPublished(2014);
+        book.setReview("Very impressive and interesting story.");
+        book.setGenre("Thriller");
+        repository.insertBookCustom(book.getTitle(),book.getAuthor(),
+                                    book.getPages(),book.getYearPublished(),
+                                    book.getReview(),book.getGenre());
+        long newCount = repository.count();
+        assertTrue(oldCount == newCount - 1);
+    }
+    */
 
+    @Test
+    public void testIfIncrementNumberOfRatingsWorks(){
+        Book book = repository.findByTitle("It");
+        int oldNumberOfRatings = book.getNumberOfRatings();
+        repository.incrementNumberOfRatings(book.getId());
+        assertTrue(repository.getNumberOfRatings(book.getId()) == oldNumberOfRatings + 1);
+        repository.setNumberOfRatings(book.getId(),oldNumberOfRatings);
+    }
 
+    @Test
+    public void testIfRateABookWorks(){
+        Book book = repository.findByTitle("Origin");
+        Long id = book.getId();
+        repository.rateABook(id,10D);
+        repository.incrementNumberOfRatings(id);
+        book = repository.findByTitle("Origin");
+        assertTrue(book.getRating().equals(10D));
+    }
 
 }
