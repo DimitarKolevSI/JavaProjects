@@ -58,6 +58,49 @@ public class BookJpa {
         assertTrue(books.size() == 0);
     }
 
+    @Test
+    public void testIfFindByGenreContainsWorksWithValidGenre(){
+        String genre="Fantasy";
+        List<Book> books = repository.findByGenre(genre);
+        assertTrue(books.size() > 0);
+    }
+
+    @Test
+    public void testIfFindByGenreContainsWorksWithInvalidGenre(){
+        String genre="Action";
+        List<Book> books = repository.findByGenre(genre);
+        assertTrue(books.size() == 0);
+    }
+
+    @Test
+    public void testIfFindByPagesLessThanWorksWithValidPages(){
+        Integer pages = 500;
+        List<Book> books = repository.findByPagesLessThan(pages);
+        assertTrue(books.size() > 0);
+    }
+
+    @Test
+    public void testIfFindByPagesLessThanWorksWithInvalidPages(){
+        Integer pages = 20;
+        List<Book> books = repository.findByPagesLessThan(pages);
+        assertTrue(books.size() == 0);
+    }
+
+    @Test
+    public void testIfFindByPagesGreaterThanWorksWithValidPages(){
+        Integer pages = 500;
+        List<Book> books = repository.findByPagesGreaterThan(pages);
+        assertTrue(books.size() > 0);
+    }
+
+    @Test
+    public void testIfFindByPagesGreaterThanWorksWithInvalidPages(){
+        Integer pages = 1138;
+        List<Book> books = repository.findByPagesGreaterThan(pages);
+        assertTrue(books.size() == 0);
+    }
+
+
 
 
 }
