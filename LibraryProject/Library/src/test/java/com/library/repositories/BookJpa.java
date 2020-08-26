@@ -44,6 +44,20 @@ public class BookJpa {
         assertNull(it);
     }
 
+    @Test
+    public void testIfFindByTitleContainsWorksWithValidTitle(){
+        String title="PET";
+        List<Book> books = repository.findByTitleContainingIgnoreCase(title);
+        assertTrue(books.size() > 0);
+    }
+
+    @Test
+    public void testIfFindByTitleContainsWorksWithInvalidTitle(){
+        String title="PETS";
+        List<Book> books = repository.findByTitleContainingIgnoreCase(title);
+        assertTrue(books.size() == 0);
+    }
+
 
 
 }
