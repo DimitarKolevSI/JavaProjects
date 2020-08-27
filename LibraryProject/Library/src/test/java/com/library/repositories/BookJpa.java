@@ -149,12 +149,12 @@ public class BookJpa {
 
     @Test
     public void testIfRateABookWorks(){
-        Book book = repository.findByTitle("Origin");
+        Book book = repository.findByTitle("It");
         Long id = book.getId();
-        repository.rateABook(id,10D);
+        repository.rateABook(id,1D);
         repository.incrementNumberOfRatings(id);
         book = repository.findByTitle("Origin");
-        assertTrue(book.getRating().equals(10D));
+        assertTrue(book.getRating().equals(8.2));
     }
 
 }

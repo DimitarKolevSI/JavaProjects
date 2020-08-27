@@ -13,11 +13,19 @@ import java.util.List;
 @Repository
 public interface BookJpaRepository extends JpaRepository<Book,Long> {
     List<Book> findByAuthor(String author);
+
     Book findByTitle(String title);
+
     List<Book> findByTitleContainingIgnoreCase(String title);
+
     List<Book> findByGenre(String genre);
+
     List<Book> findByPagesLessThan(Integer pages);
+
     List<Book> findByPagesGreaterThan(Integer pages);
+
+
+
     @Transactional
     @Modifying
     @Query(value = "INSERT INTO books(title,author,pages,year_published,review,genre)" +
@@ -25,6 +33,7 @@ public interface BookJpaRepository extends JpaRepository<Book,Long> {
     void insertBookCustom(@Param("title")String title,@Param("author")String author,
                           @Param("pages")Integer pages,@Param("year")Integer yearPublished,
                           @Param("review")String review,@Param("genre")String genre);
+
     @Transactional
     @Modifying
     @Query(value = "UPDATE books SET number_of_ratings = number_of_ratings + 1" +
