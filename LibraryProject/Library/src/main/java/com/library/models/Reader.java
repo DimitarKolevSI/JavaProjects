@@ -1,9 +1,7 @@
 package com.library.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "readers")
@@ -22,10 +20,22 @@ public class Reader {
     private String lastName;
 
     @Column(name = "gender")
-    private char gender;
+    private char gender = '-';
 
     @Column(name = "email")
     private String email;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "read_books",
+            joinColumns = @JoinColumn(name = "username"),
+            inverseJoinColumns = @JoinColumn(name = "books_id")
+    )
+    List<Book> readBooks;
+
+    public List<Book> getReadBooks() {
+        return readBooks;
+    }
 
     public Reader() {
     }

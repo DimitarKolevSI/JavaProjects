@@ -3,6 +3,7 @@ package com.library.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "books")
@@ -39,6 +40,9 @@ public class Book {
 
     @Column(name = "review")
     private String review;
+
+    @ManyToMany(mappedBy = "readBooks")
+    List<Reader> books;
 
     public Book() {
     }
