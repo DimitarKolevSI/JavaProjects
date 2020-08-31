@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "books")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","readBy"})
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +43,18 @@ public class Book {
     private String review;
 
     @ManyToMany(mappedBy = "readBooks")
-    List<Reader> books;
+    List<Reader> readBy;
+
+    //@OneToMany(mappedBy = "book")/*, fetch = FetchType.LAZY)*/
+    //private List<ReadersReview> reviews;
+
+    public List<Reader> getReadBy() {
+        return readBy;
+    }
+
+    /*public List<ReadersReview> getReviews() {
+        return reviews;
+    }*/
 
     public Book() {
     }
@@ -125,5 +137,18 @@ public class Book {
 
     public void setReview(String review) {
         this.review = review;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return id.equals(book.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

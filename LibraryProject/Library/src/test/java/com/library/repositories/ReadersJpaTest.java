@@ -2,11 +2,17 @@ package com.library.repositories;
 
 import com.library.models.Book;
 import com.library.models.Reader;
+import net.minidev.json.JSONUtil;
+import org.hibernate.exception.ConstraintViolationException;
+import org.junit.Rule;
 import org.junit.jupiter.api.Test;
+import org.junit.rules.ExpectedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.DataIntegrityViolationException;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -49,10 +55,41 @@ public class ReadersJpaTest {
     public void testIfManyToManyAnnotationIsDoneCorrectly(){
         String username = "dimitar_kolev";
         Reader reader = repository.findByUsername(username);
-        List<Book> readBooks = reader.getReadBooks();
+        Set<Book> readBooks = reader.getReadBooks();
         for(Book book:readBooks){
             System.out.println(book.getTitle());
         }
         assertTrue(reader.getReadBooks().size() > 0);
+    }
+
+    //Works if the books is not already read
+    @Test
+    public void testIfReadBookWorksProperly(){
+        String username="dimitar_kolev";
+        Reader reader = repository.findByUsername(username);
+        int size = reader.getReadBooks().size();
+        System.out.println("Initial size is: " + size);
+        repository.readBook(username,2L);
+        reader = repository.findByUsername(username);
+        assertTrue(size + 1 == reader.getReadBooks().size());
+    }
+
+    @Test
+    public void testIfReadBookWorksProperlyWhenBookIsAlreadyRead(){
+        String username="dimitar_kolev";
+        Reader reader = repository.findByUsername(username);
+        /**
+         * Kind of replacement for the @Test(expected = ...)
+         * since it wasn't working and could find the solution using
+         * the @Rule annotation and ExpectedException
+         */
+        try {
+            repository.readBook(username, 12L);
+        }
+        catch (DataIntegrityViolationException dive){
+            assertTrue(true);
+            return;
+        }
+        assertTrue(false);
     }
 }

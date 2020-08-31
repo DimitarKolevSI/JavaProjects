@@ -56,4 +56,9 @@ public interface BookJpaRepository extends JpaRepository<Book,Long> {
             "WHERE id = :id"
             ,nativeQuery = true)
     void rateABook(@Param("id")Long id,@Param("rating")Double rating);
+
+    @Query(value = "SELECT b FROM Book b")
+    List<Book> getAllBooks();
+
+    List<Book> findAllByTitleContainingOrderByTitleAsc(String title);
 }

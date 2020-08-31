@@ -157,4 +157,11 @@ public class BookJpa {
         assertTrue(book.getRating().equals(8.2));
     }
 
+    @Test
+    public void randomTestForNow(){
+        String title = "It";
+        Book it = repository.findByTitle(title);
+        assertTrue(it.getTitle().equals(title));
+    }
+
 }

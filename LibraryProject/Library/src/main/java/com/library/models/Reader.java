@@ -1,10 +1,15 @@
 package com.library.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "readers")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","readBooks"})
 public class Reader {
     @Id
     @Column(name = "username")
@@ -31,9 +36,9 @@ public class Reader {
             joinColumns = @JoinColumn(name = "username"),
             inverseJoinColumns = @JoinColumn(name = "books_id")
     )
-    List<Book> readBooks;
+    Set<Book> readBooks;
 
-    public List<Book> getReadBooks() {
+    public Set<Book> getReadBooks() {
         return readBooks;
     }
 
@@ -86,5 +91,18 @@ public class Reader {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Reader reader = (Reader) o;
+        return username.equals(reader.username);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username);
     }
 }
