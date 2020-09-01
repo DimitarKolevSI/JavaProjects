@@ -164,4 +164,13 @@ public class BookJpa {
         assertTrue(it.getTitle().equals(title));
     }
 
+    @Test
+    public void testIfFindAllGenresWorks(){
+        List<String> genres = repository.getAllGenres();
+        for(String genre:genres){
+            System.out.println(genre);
+        }
+        assertTrue(genres.size()>0);
+    }
+
 }

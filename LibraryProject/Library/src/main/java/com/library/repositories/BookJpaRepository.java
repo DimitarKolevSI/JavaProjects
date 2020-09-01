@@ -12,6 +12,7 @@ import java.util.List;
 
 @Repository
 public interface BookJpaRepository extends JpaRepository<Book,Long> {
+
     List<Book> findByAuthor(String author);
 
     Book findByTitle(String title);
@@ -24,7 +25,9 @@ public interface BookJpaRepository extends JpaRepository<Book,Long> {
 
     List<Book> findByPagesGreaterThan(Integer pages);
 
+    List<Book> findAllByTitleContainingIgnoreCaseOrderByTitleAsc(String title);
 
+    List<Book> findByTitleContainingOrderByYearPublishedDesc(String title);
 
     @Transactional
     @Modifying
@@ -37,7 +40,7 @@ public interface BookJpaRepository extends JpaRepository<Book,Long> {
     @Transactional
     @Modifying
     @Query(value = "UPDATE books SET number_of_ratings = number_of_ratings + 1" +
-            "WHERE id = :id",nativeQuery = true)
+            " WHERE id = :id",nativeQuery = true)
     void incrementNumberOfRatings(@Param("id")Long id);
 
     @Transactional
@@ -60,5 +63,7 @@ public interface BookJpaRepository extends JpaRepository<Book,Long> {
     @Query(value = "SELECT b FROM Book b")
     List<Book> getAllBooks();
 
-    List<Book> findAllByTitleContainingOrderByTitleAsc(String title);
+    @Query(value = "SELECT DISTINCT genre FROM books",nativeQuery = true)
+    List<String> getAllGenres();
+
 }
