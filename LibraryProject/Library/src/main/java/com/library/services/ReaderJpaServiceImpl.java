@@ -30,11 +30,6 @@ public class ReaderJpaServiceImpl implements ReaderService {
     }
 
     @Override
-    public String getPasswordByUsername(String username) {
-        return readerJpaRepository.getPasswordByUsername(username);
-    }
-
-    @Override
     public void readBook(String username, Long id) {
         readerJpaRepository.readBook(username,id);
     }
@@ -49,5 +44,10 @@ public class ReaderJpaServiceImpl implements ReaderService {
         Reader reader = readerJpaRepository.findByUsername(username);
         if (reader == null) return Collections.emptySet();
         return reader.getReadBooks();
+    }
+
+    @Override
+    public void addReader(Reader newReader) {
+        readerJpaRepository.saveAndFlush(newReader);
     }
 }

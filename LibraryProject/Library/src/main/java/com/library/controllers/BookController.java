@@ -22,11 +22,6 @@ public class BookController {
         this.service = service;
     }
 
-    @GetMapping(value = "get_all")
-    public List<Book> getAllBooks(){
-        return service.getAllBooks();
-    }
-
     @GetMapping(value = "get_all_ordered")
     public List<Book> findAllOrderByTitle() {
         return service.findAllOrderByTitle("");
@@ -60,5 +55,10 @@ public class BookController {
     @GetMapping(value = "get_all_by_year_desc")
     public List<Book> getAllBooksOrderedByYearDesc(){
         return service.getAllBooksOrderedByYearDesc("");
+    }
+
+    @GetMapping(value = "find_by_genre/{genre}")
+    public List<Book> findByGenre(@PathVariable("genre")String genre){
+        return service.findByGenre(genre);
     }
 }

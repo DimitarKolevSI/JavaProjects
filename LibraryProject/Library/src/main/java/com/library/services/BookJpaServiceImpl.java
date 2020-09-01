@@ -18,11 +18,6 @@ public class BookJpaServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> getAllBooks() {
-        return repository.getAllBooks();
-    }
-
-    @Override
     public List<Book> findAllOrderByTitle(String title) {
         return repository.findAllByTitleContainingIgnoreCaseOrderByTitleAsc(title);
     }
@@ -45,27 +40,6 @@ public class BookJpaServiceImpl implements BookService {
     @Override
     public List<Book> findByGenre(String genre) {
         return repository.findByGenre(genre);
-    }
-
-    @Override
-    public List<Book> findByPagesLessThan(Integer pages) {
-        return repository.findByPagesLessThan(pages);
-    }
-
-    @Override
-    public List<Book> findByPagesGreaterThan(Integer pages) {
-        return repository.findByPagesGreaterThan(pages);
-    }
-
-    @Override
-    public void insertBookCustom(String title, String author, Integer pages,
-                                 Integer yearPublished, String review, String genre) {
-        repository.insertBookCustom(title, author, pages, yearPublished, review, genre);
-    }
-
-    @Override
-    public void incrementNumberOfRatings(Long id) {
-        repository.incrementNumberOfRatings(id);
     }
 
     @Override

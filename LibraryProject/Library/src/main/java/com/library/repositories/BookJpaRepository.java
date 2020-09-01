@@ -29,6 +29,8 @@ public interface BookJpaRepository extends JpaRepository<Book,Long> {
 
     List<Book> findByTitleContainingOrderByYearPublishedDesc(String title);
 
+    /**
+     * Unnecessary methods left only for idea if it is needed
     @Transactional
     @Modifying
     @Query(value = "INSERT INTO books(title,author,pages,year_published,review,genre)" +
@@ -50,6 +52,7 @@ public interface BookJpaRepository extends JpaRepository<Book,Long> {
 
     @Query(value = "SELECT number_of_ratings FROM books WHERE id = :id",nativeQuery = true)
     Integer getNumberOfRatings(@Param("id")Long id);
+     **/
 
     @Transactional
     @Modifying
@@ -59,9 +62,6 @@ public interface BookJpaRepository extends JpaRepository<Book,Long> {
             "WHERE id = :id"
             ,nativeQuery = true)
     void rateABook(@Param("id")Long id,@Param("rating")Double rating);
-
-    @Query(value = "SELECT b FROM Book b")
-    List<Book> getAllBooks();
 
     @Query(value = "SELECT DISTINCT genre FROM books",nativeQuery = true)
     List<String> getAllGenres();

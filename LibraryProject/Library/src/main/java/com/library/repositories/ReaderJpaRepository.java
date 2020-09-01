@@ -13,13 +13,16 @@ import java.util.List;
 
 @Repository
 public interface ReaderJpaRepository extends JpaRepository<Reader,String> {
+
     Reader findByUsername(String username);
 
+    /**
     @Query(
             value = "SELECT password FROM readers WHERE username LIKE :username",
             nativeQuery = true
     )
     String getPasswordByUsername(String username);
+     **/
 
     @Transactional
     @Modifying

@@ -136,7 +136,7 @@ public class BookJpa {
         long newCount = repository.count();
         assertTrue(oldCount == newCount - 1);
     }
-    */
+
 
     @Test
     public void testIfIncrementNumberOfRatingsWorks(){
@@ -163,6 +163,7 @@ public class BookJpa {
         Book it = repository.findByTitle(title);
         assertTrue(it.getTitle().equals(title));
     }
+    */
 
     @Test
     public void testIfFindAllGenresWorks(){

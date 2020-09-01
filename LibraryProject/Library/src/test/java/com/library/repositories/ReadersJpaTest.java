@@ -2,19 +2,15 @@ package com.library.repositories;
 
 import com.library.models.Book;
 import com.library.models.Reader;
-import net.minidev.json.JSONUtil;
-import org.hibernate.exception.ConstraintViolationException;
-import org.junit.Rule;
 import org.junit.jupiter.api.Test;
-import org.junit.rules.ExpectedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
 
-import java.util.List;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 public class ReadersJpaTest {
@@ -35,7 +31,8 @@ public class ReadersJpaTest {
         Reader reader = repository.findByUsername(username);
         assertNull(reader);
     }
-
+    /**
+     *
     @Test
     public void testIfGetPasswordByUsernameWorks() {
         String username = "dimitar_kolev";
@@ -50,6 +47,7 @@ public class ReadersJpaTest {
         String password = repository.getPasswordByUsername(username);
         assertNull(password);
     }
+     */
 
     @Test
     public void testIfManyToManyAnnotationIsDoneCorrectly(){

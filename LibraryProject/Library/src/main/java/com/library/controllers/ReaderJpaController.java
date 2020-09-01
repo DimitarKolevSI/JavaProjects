@@ -38,7 +38,7 @@ public class ReaderJpaController {
         try {
             readerJpaService.addBook(book);
         }
-        catch (ConstraintViolationException |DataIntegrityViolationException dive){
+        catch (ConstraintViolationException|DataIntegrityViolationException dive){
             System.out.println(dive.getMessage());
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
@@ -46,7 +46,28 @@ public class ReaderJpaController {
     }
 
     @PostMapping(value = "read_book/{username}/{id}")
-    public void readBook(@PathVariable String username, @PathVariable Long id){
-        readerJpaService.readBook(username,id);
+    public ResponseEntity readBook(@PathVariable String username, @PathVariable Long id){
+        try {
+            readerJpaService.readBook(username, id);
+        }
+        catch (ConstraintViolationException|DataIntegrityViolationException dive){
+            System.out.println(dive.getMessage());
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity(HttpStatus.OK);
     }
+
+    @PutMapping(value = "add_new_reader")
+    @ResponseBody
+    public ResponseEntity addReader(@RequestBody Reader newReader){
+        try{
+            readerJpaService.addReader(newReader);
+        }
+        catch (ConstraintViolationException|DataIntegrityViolationException dive){
+            System.out.println(dive.getMessage());
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 }

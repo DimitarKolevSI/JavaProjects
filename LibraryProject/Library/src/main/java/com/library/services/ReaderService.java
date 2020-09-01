@@ -7,8 +7,8 @@ import java.util.Set;
 
 public interface ReaderService {
     Reader findByUsername(String username);
-    String getPasswordByUsername(String username);
     void readBook(String username,Long id);
     void addBook(Book book);
     Set<Book> getAllReadBooksByUser(String username);
+    void addReader(Reader newReader);
 }
