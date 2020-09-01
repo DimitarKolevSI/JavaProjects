@@ -3,6 +3,7 @@ package com.library.models;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "rated_book")
 public class RatedBooks {
 
     @EmbeddedId
@@ -18,7 +19,8 @@ public class RatedBooks {
     @JoinColumn(name = "books_id")
     Book book;
 
-    double rating;
+    @Column(name = "rating")
+    Double rating;
 
     public RatedBooks() {
     }

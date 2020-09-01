@@ -3,8 +3,9 @@ package com.library.repositories;
 import com.library.models.Book;
 import com.library.models.Reader;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.library.models.RatedBooks;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 
 import java.util.Set;
@@ -89,5 +90,17 @@ public class ReadersJpaTest {
             return;
         }
         assertTrue(false);
+    }
+
+    @Test
+    public void randomTest(){
+        Reader reader = repository.findByUsername("dimitar_kolev");
+        for(RatedBooks rating:reader.getRatings()){
+            System.out.printf("Username: %s Book's title: %s Rating: %.2f%n",
+                              rating.getReader().getUsername(),
+                              rating.getBook().getTitle(),
+                              rating.getRating());
+        }
+        assertTrue(reader.getRatings().size() > 0);
     }
 }

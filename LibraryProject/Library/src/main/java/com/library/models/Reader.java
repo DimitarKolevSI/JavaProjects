@@ -38,6 +38,13 @@ public class Reader {
     )
     Set<Book> readBooks;
 
+    @OneToMany(mappedBy = "reader",fetch = FetchType.EAGER)
+    Set<RatedBooks> ratings;
+
+    public Set<RatedBooks> getRatings() {
+        return ratings;
+    }
+
     public Set<Book> getReadBooks() {
         return readBooks;
     }

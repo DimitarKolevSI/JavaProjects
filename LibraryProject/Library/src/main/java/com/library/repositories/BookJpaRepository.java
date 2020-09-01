@@ -64,4 +64,5 @@ public interface BookJpaRepository extends JpaRepository<Book, Long> {
     @Query(value = "SELECT DISTINCT genre FROM books", nativeQuery = true)
     List<String> getAllGenres();
 
+
 }
