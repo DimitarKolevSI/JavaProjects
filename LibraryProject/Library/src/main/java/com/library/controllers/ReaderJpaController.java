@@ -1,16 +1,16 @@
 package com.library.controllers;
 
+import java.util.Set;
 import com.library.models.Book;
 import com.library.models.Reader;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import com.library.services.ReaderJpaServiceImpl;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
-import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/reader")
@@ -42,7 +42,7 @@ public class ReaderJpaController {
             System.out.println(dive.getMessage());
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @PostMapping(value = "read_book/{username}/{id}")
@@ -54,10 +54,10 @@ public class ReaderJpaController {
             System.out.println(dive.getMessage());
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "add_new_reader")
+    @PostMapping(value = "add_new_reader")
     @ResponseBody
     public ResponseEntity addReader(@RequestBody Reader newReader){
         try{
@@ -67,7 +67,6 @@ public class ReaderJpaController {
             System.out.println(dive.getMessage());
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.CREATED);
     }
-
 }

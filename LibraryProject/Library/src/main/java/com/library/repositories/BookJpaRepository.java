@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public interface BookJpaRepository extends JpaRepository<Book,Long> {
+public interface BookJpaRepository extends JpaRepository<Book, Long> {
 
     List<Book> findByAuthor(String author);
 
@@ -31,39 +31,37 @@ public interface BookJpaRepository extends JpaRepository<Book,Long> {
 
     /**
      * Unnecessary methods left only for idea if it is needed
-    @Transactional
-    @Modifying
-    @Query(value = "INSERT INTO books(title,author,pages,year_published,review,genre)" +
-            "VALUES (:title,:author,:pages,:year,:review,:genre)",nativeQuery = true)
-    void insertBookCustom(@Param("title")String title,@Param("author")String author,
-                          @Param("pages")Integer pages,@Param("year")Integer yearPublished,
-                          @Param("review")String review,@Param("genre")String genre);
-
-    @Transactional
-    @Modifying
-    @Query(value = "UPDATE books SET number_of_ratings = number_of_ratings + 1" +
-            " WHERE id = :id",nativeQuery = true)
-    void incrementNumberOfRatings(@Param("id")Long id);
-
-    @Transactional
-    @Modifying
-    @Query(value = "UPDATE books SET number_of_ratings = :number_of_ratings WHERE id = :id",nativeQuery = true)
-    void setNumberOfRatings(@Param("id")Long id,@Param("number_of_ratings") Integer numberOfRatings);
-
-    @Query(value = "SELECT number_of_ratings FROM books WHERE id = :id",nativeQuery = true)
-    Integer getNumberOfRatings(@Param("id")Long id);
+     *
+     * @Transactional
+     * @Modifying
+     * @Query(value = "INSERT INTO books(title,author,pages,year_published,review,genre)" +
+     * "VALUES (:title,:author,:pages,:year,:review,:genre)",nativeQuery = true)
+     * void insertBookCustom(@Param("title")String title,@Param("author")String author,
+     * @Param("pages")Integer pages,@Param("year")Integer yearPublished,
+     * @Param("review")String review,@Param("genre")String genre);
+     * @Transactional
+     * @Modifying
+     * @Query(value = "UPDATE books SET number_of_ratings = number_of_ratings + 1" +
+     * " WHERE id = :id",nativeQuery = true)
+     * void incrementNumberOfRatings(@Param("id")Long id);
+     * @Transactional
+     * @Modifying
+     * @Query(value = "UPDATE books SET number_of_ratings = :number_of_ratings WHERE id = :id",nativeQuery = true)
+     * void setNumberOfRatings(@Param("id")Long id,@Param("number_of_ratings") Integer numberOfRatings);
+     * @Query(value = "SELECT number_of_ratings FROM books WHERE id = :id",nativeQuery = true)
+     * Integer getNumberOfRatings(@Param("id")Long id);
      **/
 
     @Transactional
     @Modifying
     @Query(value = "UPDATE books SET rating = " +
-            "((SELECT number_of_ratings * rating + :rating FROM books WHERE id = :id))/"+
-            "((SELECT number_of_ratings FROM books WHERE id = :id) + 1)"+
+            "((SELECT number_of_ratings * rating + :rating FROM books WHERE id = :id))/" +
+            "((SELECT number_of_ratings FROM books WHERE id = :id) + 1)" +
             "WHERE id = :id"
-            ,nativeQuery = true)
-    void rateABook(@Param("id")Long id,@Param("rating")Double rating);
+            , nativeQuery = true)
+    void rateABook(@Param("id") Long id, @Param("rating") Double rating);
 
-    @Query(value = "SELECT DISTINCT genre FROM books",nativeQuery = true)
+    @Query(value = "SELECT DISTINCT genre FROM books", nativeQuery = true)
     List<String> getAllGenres();
 
 }

@@ -31,7 +31,7 @@ public class ReaderJpaServiceImpl implements ReaderService {
 
     @Override
     public void readBook(String username, Long id) {
-        readerJpaRepository.readBook(username,id);
+        readerJpaRepository.readBook(username, id);
     }
 
     @Override
@@ -48,6 +48,8 @@ public class ReaderJpaServiceImpl implements ReaderService {
 
     @Override
     public void addReader(Reader newReader) {
-        readerJpaRepository.saveAndFlush(newReader);
+        readerJpaRepository.addReader(newReader.getUsername(), newReader.getPassword(),
+                newReader.getFirstName(), newReader.getLastName(),
+                newReader.getGender(), newReader.getEmail());
     }
 }
