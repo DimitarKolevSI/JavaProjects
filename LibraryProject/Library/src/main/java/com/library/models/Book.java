@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "books")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","readBy"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","readBy","ratings"})
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

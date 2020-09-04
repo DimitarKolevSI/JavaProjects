@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "readers")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","readBooks"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","readBooks","ratings"})
 public class Reader {
     @Id
     @Column(name = "username")

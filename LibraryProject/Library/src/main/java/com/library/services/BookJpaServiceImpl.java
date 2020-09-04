@@ -51,4 +51,11 @@ public class BookJpaServiceImpl implements BookService {
     public List<Book> getAllBooksOrderedByYearDesc(String title) {
         return repository.findByTitleContainingOrderByYearPublishedDesc(title);
     }
+
+    @Override
+    public void rateBook(Long id, String username, Double rating) {
+        repository.addBookRating(id, username, rating);
+        repository.updateNumberOfRatings(id);
+        repository.updateRatings(id);
+    }
 }

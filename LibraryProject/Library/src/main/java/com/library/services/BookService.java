@@ -21,4 +21,6 @@ public interface BookService {
     List<String> getAllGenres();
 
     List<Book> getAllBooksOrderedByYearDesc(String title);
+
+    void rateBook(Long id, String username, Double rating);
 }

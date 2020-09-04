@@ -61,6 +61,32 @@ public interface BookJpaRepository extends JpaRepository<Book, Long> {
             , nativeQuery = true)
     void rateABook(@Param("id") Long id, @Param("rating") Double rating);
 
+    @Transactional
+    @Modifying
+    @Query(value = "INSERT INTO rated_book VALUES (:username,:id,CAST(:rating AS DECIMAL(4,2)))",
+           nativeQuery = true)
+    void addBookRating(@Param("id")Long id,@Param("username")String username,
+                       @Param("rating")Double rating);
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE books SET number_of_ratings = " +
+            "(SELECT COUNT(*) FROM rated_book WHERE books_id = :id )" +
+            "WHERE id = :id",
+            nativeQuery = true)
+    void updateNumberOfRatings(@Param("id")Long id);
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE books b SET " +
+            "rating = (SELECT CAST(SUM(rating)/COUNT(*) AS DECIMAL(4,2)) " +
+            "FROM rated_book WHERE books_id = :id)\n" +
+            "WHERE id = :id",
+            nativeQuery = true)
+    void updateRatings(@Param("id")Long id);
+
+
+
     @Query(value = "SELECT DISTINCT genre FROM books", nativeQuery = true)
     List<String> getAllGenres();
 

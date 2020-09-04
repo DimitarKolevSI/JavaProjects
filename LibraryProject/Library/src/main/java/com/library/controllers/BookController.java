@@ -4,11 +4,12 @@ import com.library.models.Book;
 import com.library.repositories.BookJpaRepository;
 import com.library.services.BookJpaServiceImpl;
 import jdk.jshell.EvalException;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -60,5 +61,20 @@ public class BookController {
     @GetMapping(value = "find_by_genre/{genre}")
     public List<Book> findByGenre(@PathVariable("genre")String genre){
         return service.findByGenre(genre);
+    }
+
+    @PostMapping(value = "rate/{book_id}/{username}/{rating}")
+    public ResponseEntity rateBook(@PathVariable("book_id")Long book_id,@PathVariable("username")String username,
+                                   @PathVariable("rating")Double rating){
+        try{
+            service.rateBook(book_id, username, rating);
+        }
+        catch (ConstraintViolationException | DataIntegrityViolationException dive){
+            System.out.println(dive.getMessage());
+            System.out.println("You have already rated this book!");
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity(HttpStatus.CREATED);
+
     }
 }
