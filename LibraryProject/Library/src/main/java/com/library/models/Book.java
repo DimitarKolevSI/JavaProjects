@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "books")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","readBy","ratings"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","readBy","ratings","reviews"})
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,19 +46,19 @@ public class Book {
     @ManyToMany(mappedBy = "readBooks")
     List<Reader> readBy;
 
-    //@OneToMany(mappedBy = "book")/*, fetch = FetchType.LAZY)*/
-    //private List<ReadersReview> reviews;
-
     public List<Reader> getReadBy() {
         return readBy;
     }
 
-    /*public List<ReadersReview> getReviews() {
-        return reviews;
-    }*/
-
     @OneToMany(mappedBy = "book")
     Set<RatedBooks> ratings;
+
+    @OneToMany(mappedBy = "book")
+    Set<BooksReview> reviews;
+
+    public Set<BooksReview> getReviews() {
+        return reviews;
+    }
 
     public Set<RatedBooks> getRatings() {
         return ratings;

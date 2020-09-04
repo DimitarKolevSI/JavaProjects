@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "readers")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","readBooks","ratings"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","readBooks","ratings","reviews"})
 public class Reader {
     @Id
     @Column(name = "username")
@@ -40,6 +40,9 @@ public class Reader {
 
     @OneToMany(mappedBy = "reader",fetch = FetchType.EAGER)
     Set<RatedBooks> ratings;
+
+    @OneToMany(mappedBy = "reader",fetch = FetchType.EAGER)
+    Set<BooksReview> reviews;
 
     public Set<RatedBooks> getRatings() {
         return ratings;
