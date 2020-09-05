@@ -22,7 +22,29 @@ public class BooksReview {
     @Column(name = "review")
     String review;
 
+    @Column(name = "posted_date")
+    String postedDate;
+
+    @Column(name = "posted_time")
+    String postedTime;
+
     public BooksReview() {
+    }
+
+    public String getPostedDate() {
+        return postedDate;
+    }
+
+    public void setPostedDate(String postedDate) {
+        this.postedDate = postedDate;
+    }
+
+    public String getPostedTime() {
+        return postedTime;
+    }
+
+    public void setPostedTime(String postedTime) {
+        this.postedTime = postedTime;
     }
 
     public BooksReviewKey getId() {

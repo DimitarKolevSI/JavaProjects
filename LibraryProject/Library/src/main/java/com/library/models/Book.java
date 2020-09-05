@@ -50,10 +50,10 @@ public class Book {
         return readBy;
     }
 
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "book",fetch = FetchType.EAGER)
     Set<RatedBooks> ratings;
 
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "book",fetch = FetchType.EAGER)
     Set<BooksReview> reviews;
 
     public Set<BooksReview> getReviews() {
