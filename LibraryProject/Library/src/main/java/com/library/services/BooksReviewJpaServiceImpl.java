@@ -3,9 +3,11 @@ package com.library.services;
 import com.library.models.BooksReview;
 import com.library.repositories.BookReviewsJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class BooksReviewJpaServiceImpl implements BooksReviewService {
 
     private BookReviewsJpaRepository repository;
