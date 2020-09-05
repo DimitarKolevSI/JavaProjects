@@ -1,9 +1,12 @@
 package com.library.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "readers_review")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","reader","book"})
 public class BooksReview {
 
     @EmbeddedId
