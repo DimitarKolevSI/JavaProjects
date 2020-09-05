@@ -9,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
-import java.util.List;
 import java.util.Set;
 
 @Repository
@@ -22,7 +21,7 @@ public interface BookReviewsJpaRepository extends JpaRepository<BooksReview, Boo
     @Modifying
     @Transactional
     @Query(
-            value = "INSERT INTO readers_review(username, book_id, review) " +
+            value = "INSERT INTO readers_review(username, books_id, review) " +
                     "VALUES(:username,:books_id,:review)",
             nativeQuery = true
     )
