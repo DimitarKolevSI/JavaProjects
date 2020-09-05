@@ -10,13 +10,14 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public interface BookReviewsJpaRepository extends JpaRepository<BooksReview, BooksReviewKey> {
 
     @Query(value = "SELECT * FROM readers_review WHERE books_id = :id ORDER BY posted_date,posted_time DESC",
             nativeQuery = true)
-    List<BooksReview> getAllReviewsByBookIdOrderedByTimeDesc(@Param("id")Long id);
+    Set<BooksReview> getAllReviewsByBookIdOrderedByTimeDesc(@Param("id")Long id);
 
     @Modifying
     @Transactional

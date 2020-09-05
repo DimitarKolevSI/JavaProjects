@@ -189,7 +189,7 @@ public class BookJpa {
     @Test
     public void testIfGetAllReviewsWorksWhenCalledFromReviewRepository(){
         Long id = 4L;
-        List<BooksReview> reviews = reviewsJpaRepository.getAllReviewsByBookIdOrderedByTimeDesc(id);
+        Set<BooksReview> reviews = reviewsJpaRepository.getAllReviewsByBookIdOrderedByTimeDesc(id);
         assertTrue(reviews.size() > 0);
     }
 }
