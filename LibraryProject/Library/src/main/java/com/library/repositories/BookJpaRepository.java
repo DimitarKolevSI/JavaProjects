@@ -1,6 +1,7 @@
 package com.library.repositories;
 
 import com.library.models.Book;
+import com.library.models.BooksReview;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -84,8 +85,6 @@ public interface BookJpaRepository extends JpaRepository<Book, Long> {
             "WHERE id = :id",
             nativeQuery = true)
     void updateRatings(@Param("id")Long id);
-
-
 
     @Query(value = "SELECT DISTINCT genre FROM books", nativeQuery = true)
     List<String> getAllGenres();
