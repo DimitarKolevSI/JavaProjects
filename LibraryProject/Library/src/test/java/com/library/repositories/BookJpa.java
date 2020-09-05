@@ -1,11 +1,13 @@
 package com.library.repositories;
 
 import com.library.models.Book;
+import com.library.models.BooksReview;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,6 +16,9 @@ public class BookJpa {
 
     @Autowired
     BookJpaRepository repository;
+
+    @Autowired
+    BookReviewsJpaRepository reviewsJpaRepository;
 
     @Test
     public void testIfFindingByAuthorWorksWithValidAuthor(){
@@ -174,4 +179,17 @@ public class BookJpa {
         assertTrue(genres.size()>0);
     }
 
+    @Test
+    public void testIfGetAllReviewsWorkProperlyWhenCalledFromBookRepository(){
+        String title = "It";
+        Set<BooksReview> reviews = repository.findByTitle(title).getReviews();
+        assertTrue(reviews.size() > 0);
+    }
+
+    @Test
+    public void testIfGetAllReviewsWorksWhenCalledFromReviewRepository(){
+        Long id = 4L;
+        List<BooksReview> reviews = reviewsJpaRepository.getAllReviewsByBookIdOrderedByTimeDesc(id);
+        assertTrue(reviews.size() > 0);
+    }
 }
