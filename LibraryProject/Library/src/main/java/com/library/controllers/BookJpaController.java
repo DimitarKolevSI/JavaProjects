@@ -15,11 +15,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/books")
-public class BookController {
+public class BookJpaController {
     private BookJpaServiceImpl service;
 
     @Autowired
-    public BookController(BookJpaServiceImpl service) {
+    public BookJpaController(BookJpaServiceImpl service) {
         this.service = service;
     }
 
