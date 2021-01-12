@@ -26,11 +26,10 @@ public class WishListClient {
 
             while (true) {
                 System.out.print("Enter message: ");
-                String message = scanner.nextLine(); // read a line from the console
+                String message = scanner.nextLine();
 
                 writer.println(message);
 
-                // read the response from the server
                 System.out.println(reader.readLine());
 
                 if ("disconnect".equals(message)) {

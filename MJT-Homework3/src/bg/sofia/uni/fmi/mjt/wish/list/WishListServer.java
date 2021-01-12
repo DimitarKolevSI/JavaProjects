@@ -8,7 +8,16 @@ import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.Set;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Random;
+
 
 public class WishListServer {
 
@@ -23,9 +32,7 @@ public class WishListServer {
     private static final String REGEX_FOR_USERNAME = "^[a-zA-Z0-9-._]+$";
     public final int serverPort;
     private static final int BUFFER_SIZE = 1024;
-    private static final Map<SocketChannel, Student> studentPerPort = new HashMap<>();
     private static final Map<String, Set<String>> wishListByStudent = new HashMap<>();
-    private static final Map<String, Student> studentByUsername = new HashMap<>();
     private ServerSocketChannel serverSocketChannel;
 
     public WishListServer(int serverPort) {
@@ -75,8 +82,8 @@ public class WishListServer {
                         String[] words = new String(clientInputBytes, StandardCharsets.UTF_8).split("\\s+");
                         String command = words[0];
                         switch (command) {
-                            case REGISTER -> respond = generateRespondForRegister(words);
-                            case LOGIN -> respond = generateRespondForLogin(words, sc);
+                            case REGISTER -> respond = generateRespondForRegister(words[1], words[2]);
+                            case LOGIN -> respond = generateRespondForLogin(words[1], words[2], sc);
                             case LOGOUT -> respond = generateRespondForLogout(sc);
                             case POST_WISH -> respond = generateRespondForPostingWish(words, sc);
                             case GET_WISH -> respond = generateRespondForGettingWish(sc);
@@ -121,7 +128,7 @@ public class WishListServer {
     }
 
     private String generateRespondForPostingWish(String[] words, SocketChannel sc) {
-        if (!checkIfClientIsLoggedIn(sc)) {
+        if (!AuthenticationService.isClientIsLoggedIn(sc)) {
             return MessageTemplates.FAILED_COMMAND_MESSAGE;
         }
         String student = words[1];
@@ -140,23 +147,24 @@ public class WishListServer {
     }
 
     private String generateRespondForGettingWish(SocketChannel sc) {
-        if (!checkIfClientIsLoggedIn(sc)) {
+        if (!AuthenticationService.isClientIsLoggedIn(sc)) {
             return MessageTemplates.FAILED_COMMAND_MESSAGE;
         }
-        String randomStudent = generateRandomStudent(studentPerPort.get(sc).getUsername());
+        String randomStudent = generateRandomStudent(AuthenticationService.getUsernameOfClient(sc));
         if (randomStudent == null) {
             return MessageTemplates.EMPTY_STUDENTS_MESSAGE;
         } else {
             Set<String> wishes = wishListByStudent.get(randomStudent);
             wishListByStudent.remove(randomStudent);
-            return String.format(MessageTemplates.FORMATTED_WISH_LIST, randomStudent, Arrays.toString(wishes.toArray()));
+            return String.format(MessageTemplates.FORMATTED_WISH_LIST,
+                    randomStudent, Arrays.toString(wishes.toArray()));
         }
     }
 
     private String generateRandomStudent(String currentUsername) {
         Set<String> students = new HashSet<>(wishListByStudent.keySet());
         students.remove(currentUsername);
-        if (students.size() == 0) {
+        if (students.size() == 0 || currentUsername == null) {
             return null;
         } else {
             List<String> studentsList = new ArrayList<>(wishListByStudent.keySet());
@@ -165,41 +173,25 @@ public class WishListServer {
         }
     }
 
-    private String generateRespondForRegister(String[] words) {
-        String username = words[1];
-        String password = words[2];
+    private String generateRespondForRegister(String username, String password) {
         if (!username.matches(REGEX_FOR_USERNAME)) {
             return String.format(MessageTemplates.INVALID_USERNAME_MESSAGE, username);
-        } else if (studentByUsername.containsKey(username)) {
+        } else if (!AuthenticationService.registerNewUser(username, password)) {
             return String.format(MessageTemplates.REGISTRATION_FAILED_MESSAGE, username);
         } else {
-            studentByUsername.put(username, new Student(username, password));
             return String.format(MessageTemplates.SUCCESSFUL_REGISTRATION_MESSAGE, username);
         }
     }
 
-    private String generateRespondForLogin(String[] words, SocketChannel sc) {
-        String username = words[1];
-        String password = words[2];
-        Student student = studentByUsername.getOrDefault(username, null);
-        if (student == null || !student.getPassword().equals(password)) {
-            return MessageTemplates.FAILED_LOGIN_MESSAGE;
-        } else {
-            studentPerPort.put(sc, student);
-            return String.format(MessageTemplates.SUCCESSFUL_LOGIN_MESSAGE, username);
-        }
+    private String generateRespondForLogin(String username, String password, SocketChannel sc) {
+        return AuthenticationService.loginUser(sc, username, password) ?
+                String.format(MessageTemplates.SUCCESSFUL_LOGIN_MESSAGE, username) :
+                MessageTemplates.FAILED_LOGIN_MESSAGE;
     }
 
     private String generateRespondForLogout(SocketChannel sc) {
-        if (!checkIfClientIsLoggedIn(sc)) {
-            return MessageTemplates.FAILED_COMMAND_MESSAGE;
-        }
-        studentPerPort.remove(sc);
-        return MessageTemplates.SUCCESSFUL_LOGOUT_MESSAGE;
-    }
-
-    private boolean checkIfClientIsLoggedIn(SocketChannel sc) {
-        return studentPerPort.containsKey(sc);
+        return AuthenticationService.logoutUser(sc) ? MessageTemplates.SUCCESSFUL_LOGOUT_MESSAGE :
+                MessageTemplates.FAILED_COMMAND_MESSAGE;
     }
 
 
